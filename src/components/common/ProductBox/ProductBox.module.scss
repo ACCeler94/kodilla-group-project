@@ -8,12 +8,14 @@
   .photo {
     position: relative;
     padding: 80% 10px 0 10px;
+
     background: {
       color: #f4f5f7;
       size: contain;
       position: center;
       repeat: no-repeat;
     }
+
     overflow: hidden;
     align-items: flex-end;
 
@@ -29,6 +31,9 @@
     }
 
     .buttons {
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.2s linear, opacity 0.2s linear;
       display: flex;
       justify-content: space-between;
     }
@@ -74,5 +79,29 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .priceContainer {
+      transition: background-color 0.2s linear, color 0.2s linear;
+    }
+  }
+}
+
+.root:hover {
+  .photo {
+    .buttons {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.root:not(:hover) {
+  .actions {
+    .priceContainer {
+      background-color: #fff;
+      color: $text-color;
+      border: 1px solid #2a2a2a;
+      padding: 4px 9px;
+    }
   }
 }
