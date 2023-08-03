@@ -4,7 +4,7 @@
   border: 1px solid $form-border-color;
   display: inline-flex;
   height: 45px;
-  color: $text-color;
+  color: $search-color;
 
   .category {
     border-right: 1px solid $form-border-color;
@@ -47,7 +47,7 @@
       outline: none;
 
       &::placeholder {
-        color: $text-color;
+        color: $search-placeholder-color;
       }
     }
 
