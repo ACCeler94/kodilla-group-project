@@ -63,7 +63,7 @@ ProductBox.propTypes = {
   price: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
-  oldPrice: PropTypes.string,
+  oldPrice: PropTypes.number,
 };
 
 export default ProductBox;
