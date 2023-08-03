@@ -31,6 +31,9 @@
     }
 
     .buttons {
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.2s linear, opacity 0.2s linear;
       display: flex;
       justify-content: space-between;
     }
@@ -87,6 +90,26 @@
         font-size: 13px;
         color: #A5A5A5;
       }
+
+      .priceContainer {
+        transition: background-color 0.2s linear;
+      }
+    }
+  }
+}
+
+
+.root:hover {
+  .photo {
+    .buttons {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .actions {
+    .priceContainer {
+      background-color: $primary;
     }
   }
 }

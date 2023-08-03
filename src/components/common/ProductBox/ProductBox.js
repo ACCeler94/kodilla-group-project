@@ -49,7 +49,7 @@ const ProductBox = ({ name, price, promo, stars, oldPrice }) => (
       <div className={styles.price}>
         {// show discounted old price if it is given as a prop
         oldPrice ? <span className={styles.oldPrice}>${oldPrice}</span> : ''}
-        <Button noHover variant='small'>
+        <Button noHover variant='small' className={styles.priceContainer}>
           $ {price}
         </Button>
       </div>
