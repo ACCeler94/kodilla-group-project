@@ -1,13 +1,59 @@
+/* BASE COLORS */
 $base-padding: 24px;
-
-$header-topbar-bg: #434343;
-$header-bg: #363636;
-
-$footer-claim-bg: #2a2a2a;
-$footer-bg: #363636;
-
 $primary: #d58e32;
+$white-color: #ffffff;
+$black-color: #292929;
+$darkGray-color: #363636;
+$gray-color: #b6b6b6;
+$lightGray-color: #e1e1e1;
+$darken-white-color: #e2e2e2;
+$blueWhite-color: #f4f5f7;
 
-$text-color: #2a2a2a;
+/* HEADER */
+$header-topbar-bg: $darkGray-color;
+$header-bg: $darkGray-color;
 
-$form-border-color: #292929;
+/* FOOTER */
+$footer-claim-bg: $darkGray-color;
+$footer-text-color: $white-color;
+$footer-bg: $darkGray-color;
+
+/* CARTBOX */
+$cartbox-color: $white-color;
+
+/* TOPBAR AND MENUBAR */
+$topbar-link-color: $white-color;
+$menubar-bg: $white-color;
+$menubar-dark-border: $black-color;
+$menubar-light-border: $white-color;
+$menubar-dark-link-color: $black-color;
+$menubar-light-link-color: $white-color;
+
+/* FORM */
+$form-border-color: $black-color;
+
+/* FURNITURE */
+$panelbar-border: $darken-white-color;
+$list-color: $white-color;
+$link-color: $lightGray-color;
+
+/* PRODUCT BOX */
+$product-bg: $white-color;
+$product-border: $lightGray-color;
+$photo-bg: $blueWhite-color;
+$sale-text-color: $white-color;
+$line-border-color: $black-color;
+
+/* FEATURE BOX */
+$featurebox-border: $gray-color;
+$featurebox-bg: $white-color;
+$featurebox-hover: $white-color;
+$featurebox-icon-color: $black-color;
+
+/* BUTTON */
+$button-color: $white-color;
+$button-outline-color: $black-color;
+
+/* SEARCH */
+$search-color: $black-color;
+$search-placeholder-color: $black-color;

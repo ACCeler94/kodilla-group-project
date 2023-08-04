@@ -17,6 +17,8 @@ const initialState = {
       newFurniture: true,
       imgSrc:
         'https://img.freepik.com/free-photo/mid-century-modern-living-room-interior-design-with-monstera-tree_53876-129804.jpg?w=1060&t=st=1691091913~exp=1691092513~hmac=69edab31759abb4a970ac9b079d43ab465a4892110676ffb30d8f1410acd2d9f',
+      // old price added for testing purposes
+      oldPrice: 35,
     },
     {
       id: 'aenean-ru-bristique-2',
@@ -28,6 +30,8 @@ const initialState = {
       newFurniture: true,
       imgSrc:
         'https://img.freepik.com/free-photo/picture-frame-by-velvet-armchair_53876-132788.jpg?w=740&t=st=1691092051~exp=1691092651~hmac=29a0927b717ac30003578f5e65c4534743e810bf01a7dd0c73de41f0e4a92bd6',
+      // old price added for testing purposes
+      oldPrice: 35,
     },
     {
       id: 'aenean-ru-bristique-3',
