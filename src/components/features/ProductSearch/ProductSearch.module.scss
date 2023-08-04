@@ -12,12 +12,14 @@
     display: flex;
     align-items: center;
     position: relative;
+    transition: background-color $category-hover-transition, color $category-hover-transition;
 
     .icon:first-child {
       color: $primary;
       position: absolute;
       left: 10px;
       z-index: 0;
+      transition: color $category-hover-transition;
     }
 
     .icon:last-child {
@@ -33,12 +35,25 @@
       padding: 5px 30px 5px 35px;
       position: relative;
       z-index: 1;
+      transition: color $category-hover-transition;
     }
 
     select:focus-visible {
       outline: none;
     }
+  }
 
+  .category:hover {
+    background-color: $category-hover-bg-color;
+    color: $category-hover-color;
+
+    select {
+      color: $category-hover-color;
+    }
+
+    .icon {
+      color: $category-hover-color;
+    }
   }
 
   .searchField {
