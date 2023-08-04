@@ -80,11 +80,24 @@
     justify-content: space-between;
     align-items: center;
 
-    .priceContainer {
-      transition: background-color 0.2s linear;
+    .price {
+      display: flex;
+      align-items: center;
+
+      .oldPrice {
+        text-decoration: line-through;
+        padding-right: 5px;
+        font-size: 13px;
+        color: #A5A5A5;
+      }
+
+      .priceContainer {
+        transition: background-color 0.2s linear;
+      }
     }
   }
 }
+
 
 .root:hover {
   .photo {
