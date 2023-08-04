@@ -7,7 +7,7 @@
 
     .menuWrapper {
       h6 {
-        color: #ffffff;
+        color: $footer-text-color;
         text-transform: uppercase;
         margin: 0 0 1rem 0;
       }
@@ -23,7 +23,7 @@
             color: rgb(169, 169, 169);
 
             &:hover {
-              color: #ffffff;
+              color: $footer-text-color;
             }
           }
         }
