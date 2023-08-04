@@ -104,6 +104,10 @@
       }
     }
   }
+  .fav {
+    color: #ffff;
+    background-color: $primary;
+  }
 }
 
 
@@ -125,4 +129,5 @@
       background-color: $primary;
     }
   }
+
 }
