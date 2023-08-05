@@ -10,52 +10,63 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
+import { useDispatch } from 'react-redux';
+import { toggleFavorite } from '../../../redux/productsRedux';
 
-const ProductBox = ({ name, price, promo, stars, oldPrice, isFavorite }) => (
-  <div className={styles.root}>
-    <div className={styles.photo}>
-      {promo && <div className={styles.sale}>{promo}</div>}
-      <div className={styles.buttons}>
-        <Button variant='small'>Quick View</Button>
-        <Button variant='small'>
-          <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
-        </Button>
+const ProductBox = ({ name, price, promo, stars, oldPrice, isFavorite, id }) => {
+  const dispatch = useDispatch();
+  const handleFavorite = (e) => {
+    e.preventDefault();
+    dispatch(toggleFavorite({ id, isFavorite: !isFavorite }));
+  };
+
+  return (
+
+    <div className={styles.root}>
+      <div className={styles.photo}>
+        {promo && <div className={styles.sale}>{promo}</div>}
+        <div className={styles.buttons}>
+          <Button variant='small'>Quick View</Button>
+          <Button variant='small'>
+            <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
+          </Button>
+        </div>
+      </div>
+      <div className={styles.content}>
+        <h5>{name}</h5>
+        <div className={styles.stars}>
+          {[1, 2, 3, 4, 5].map(i => (
+            <a key={i} href='#'>
+              {i <= stars ? (
+                <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
+              ) : (
+                <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
+              )}
+            </a>
+          ))}
+        </div>
+      </div>
+      <div className={styles.line}></div>
+      <div className={styles.actions}>
+        <div className={styles.outlines}>
+          <Button variant='outline' className={isFavorite ? styles.favorite : ''} onClick={handleFavorite} >
+            <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
+          </Button>
+          <Button variant='outline'>
+            <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
+          </Button>
+        </div>
+        <div className={styles.price}>
+          {// show discounted old price if it is given as a prop
+            oldPrice ? <span className={styles.oldPrice}>${oldPrice}</span> : ''}
+          <Button noHover variant='small' className={styles.priceContainer}>
+            $ {price}
+          </Button>
+        </div>
       </div>
     </div>
-    <div className={styles.content}>
-      <h5>{name}</h5>
-      <div className={styles.stars}>
-        {[1, 2, 3, 4, 5].map(i => (
-          <a key={i} href='#'>
-            {i <= stars ? (
-              <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
-            ) : (
-              <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
-            )}
-          </a>
-        ))}
-      </div>
-    </div>
-    <div className={styles.line}></div>
-    <div className={styles.actions}>
-      <div className={styles.outlines}>
-        <Button variant='outline' className={isFavorite ? styles.favorite : ''}>
-          <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
-        </Button>
-        <Button variant='outline'>
-          <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
-        </Button>
-      </div>
-      <div className={styles.price}>
-        {// show discounted old price if it is given as a prop
-        oldPrice ? <span className={styles.oldPrice}>${oldPrice}</span> : ''}
-        <Button noHover variant='small' className={styles.priceContainer}>
-          $ {price}
-        </Button>
-      </div>
-    </div>
-  </div>
-);
+  );
+};
 
 ProductBox.propTypes = {
   children: PropTypes.node,
@@ -65,6 +76,7 @@ ProductBox.propTypes = {
   stars: PropTypes.number,
   oldPrice: PropTypes.number,
   isFavorite: PropTypes.bool,
+  id: PropTypes.string,
 };
 
 export default ProductBox;
