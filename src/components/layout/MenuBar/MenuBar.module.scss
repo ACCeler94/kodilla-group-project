@@ -4,7 +4,7 @@
   box-shadow: 2px 3.464px 6px rgba(1, 2, 2, 0.2);
   background-color: $menubar-bg;
 
-  :global(.container) > :global(.row) {
+  :global(.container)> :global(.row) {
     height: 84px;
   }
 
@@ -47,5 +47,35 @@
         border-color: $menubar-dark-border;
       }
     }
+  }
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .root {
+
+    :global(.container)> :global(.row) {
+      height: auto;
+    }
+
+    .menuBarWrapper {
+      flex-direction: column-reverse;
+      min-height: fit-content;
+      flex-wrap: nowrap;
+
+      .ProductSearchWrapper {
+        margin: 1% 0;
+      }
+
+      .menu {
+        min-height: 84px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .root> :global(.container) {
+    max-width: 100%;
   }
 }
