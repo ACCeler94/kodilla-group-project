@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './NewFurniture.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
+import Swipeable from '../../layout/Swipeable/Swipeable';
 
 const NewFurniture = props => {
   const [activePage, setActivePage] = useState(0);
@@ -14,6 +15,14 @@ const NewFurniture = props => {
 
   const handleCategoryChange = newCategory => {
     setActiveCategory(newCategory);
+  };
+
+  const leftAction = () => {
+    if (activePage === pagesCount - 1) {
+      return;
+    } else {
+      setActivePage(activePage + 1);
+    }
   };
 
   const { categories, products } = props;
@@ -63,11 +72,13 @@ const NewFurniture = props => {
           </div>
         </div>
         <div className='row'>
-          {categoryProducts.slice(activePage * 8, (activePage + 1) * 8).map(item => (
-            <div key={item.id} className='col-3'>
-              <ProductBox {...item} />
-            </div>
-          ))}
+          <Swipeable leftAction={leftAction}>
+            {categoryProducts.slice(activePage * 8, (activePage + 1) * 8).map(item => (
+              <div key={item.id} className='col-3'>
+                <ProductBox {...item} />
+              </div>
+            ))}
+          </Swipeable>
         </div>
       </div>
     </div>
