@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './NewFurniture.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
-import Swipeable from '../../layout/Swipeable/Swipeable';
+import Swipeable from '../../views/Swipeable/Swipeable';
 
 const NewFurniture = props => {
   const [activePage, setActivePage] = useState(0);
