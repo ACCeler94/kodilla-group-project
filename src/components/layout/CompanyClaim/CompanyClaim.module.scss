@@ -64,6 +64,7 @@
       }
 
       &:hover {
+        @extend %hover-animation;
 
         .cartIcon {
           @extend %hover-animation;
