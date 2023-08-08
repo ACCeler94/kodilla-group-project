@@ -18,13 +18,16 @@ const NewFurniture = props => {
   };
 
   const leftAction = () => {
-    if (activePage === pagesCount - 1) {
-      return;
-    } else {
+    if (activePage !== pagesCount - 1) {
       setActivePage(activePage + 1);
     }
   };
 
+  const rightAction = () => {
+    if (activePage !== 0) {
+      setActivePage(activePage - 1);
+    }
+  };
   const { categories, products } = props;
 
   const categoryProducts = products.filter(item => item.category === activeCategory);
@@ -71,15 +74,15 @@ const NewFurniture = props => {
             </div>
           </div>
         </div>
-        <div className='row'>
-          <Swipeable leftAction={leftAction}>
+        <Swipeable leftAction={leftAction} rightAction={rightAction}>
+          <div className='row'>
             {categoryProducts.slice(activePage * 8, (activePage + 1) * 8).map(item => (
               <div key={item.id} className='col-3'>
                 <ProductBox {...item} />
               </div>
             ))}
-          </Swipeable>
-        </div>
+          </div>
+        </Swipeable>
       </div>
     </div>
   );
