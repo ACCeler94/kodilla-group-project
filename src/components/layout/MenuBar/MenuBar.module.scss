@@ -8,56 +8,58 @@
     height: 84px;
   }
 
-  .menuToggle {
+  .inputBox {
     display: none;
   }
 
-  .menuButtonContainer {
+  .dropdown {
     display: none;
-    height: 100%;
-    width: 30px;
+    margin-right: 2.5%;
+    z-index: 999;
+  }
+
+  .hamburger {
+    align-self: flex-end;
+
+  }
+
+  label {
     cursor: pointer;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  }
 
-
-
-    .menuButton,
-    .menuButton::before,
-    .menuButton::after {
+  input[type=checkbox]+label {
+    .iconBar {
       display: block;
-      background-color: #fff;
-      height: 4px;
-      width: 30px;
-      transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
-      border-radius: 2px;
+      width: 22px;
+      height: 2px;
+      background-color: #000;
+      margin: 4px;
+      transition: all 0.2s;
     }
 
-    .menuButton::before {
-      content: '';
-      margin-top: -8px;
+    .topBar {
+      transform: rotate(0);
     }
 
-    .menuButton::after {
-      content: '';
-      margin-top: 8px;
+    .middleBar {
+      opacity: 1;
+    }
+  }
+
+  input[type=checkbox]:checked+label {
+    .topBar {
+      transform: rotate(45deg);
+      transform-origin: 10% 10%;
     }
 
-  }
+    .middleBar {
+      opacity: 0;
+    }
 
-  .menuToggle:checked+.menuButtonContainer .menuButton::before {
-    margin-top: 0px;
-    transform: rotate(405deg);
-  }
-
-  .menuToggle:checked+.menuButtonContainer .menuButton {
-    background: rgba(255, 255, 255, 0);
-  }
-
-  .menuToggle:checked+.menuButtonContainer .menuButton::after {
-    margin-top: 0px;
-    transform: rotate(-405deg);
+    .bottomBar {
+      transform: rotate(-45deg);
+      transform-origin: 10% 90%;
+    }
   }
 
   .menu {
@@ -131,18 +133,33 @@
   .root> :global(.container) {
     max-width: 100%;
   }
+}
 
+@media only screen and (max-width: 576px) {
 
-  @media only screen and (max-width: 576px) {
+  .root {
 
-    .root {
+    .menuBarWrapper {
+      flex-direction: row;
+      justify-content: space-between;
 
-      .menuButtonContainer {
+      .dropdown {
         display: flex;
+      }
+
+      .ProductSearchWrapper {
+        max-width: 90%;
       }
 
       .menu {
         display: none;
+      }
+
+
+      input[type=checkbox].inputBox:checked~.menu {
+        display: block;
+        position: absolute;
+        width: 100%;
       }
 
       .menuList {
@@ -158,7 +175,7 @@
         z-index: 999;
       }
 
-      .menuToggle~.menuList li {
+      .menuList li {
         height: 0;
         margin: 0;
         padding: 0;
@@ -166,20 +183,14 @@
         transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
       }
 
-      .menuToggle:checked~.menuList li {
-        border: 1px solid #333;
-        height: 2.5em;
-        padding: 0.5em;
-        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
-      }
 
       .menuList>li {
         display: flex;
         justify-content: center;
         margin: 0;
-        padding: 0.5em 0;
+        padding: 2em 0;
         width: 100%;
-
+        align-items: center;
       }
 
       .menuList>li:not(:last-child) {
@@ -187,3 +198,4 @@
       }
     }
   }
+}

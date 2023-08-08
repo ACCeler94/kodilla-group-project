@@ -12,9 +12,14 @@ const MenuBar = ({ children }) => (
         <div className={'col ' + styles.ProductSearchWrapper}>
           <ProductSearch />
         </div>
-        <input id='menu-toggle' type='checkbox' className={styles.menuToggle} />
-        <label className={styles.menuButtonContainer} htmlFor='menu-toggle'>
-          <div className={styles.menuButton}></div>
+        <input id='dropdown' className={styles.inputBox} type='checkbox' />
+
+        <label htmlFor='dropdown' className={styles.dropdown}>
+          <span className={styles.hamburger}>
+            <span className={`${styles.iconBar} ${styles.topBar}`}></span>
+            <span className={`${styles.iconBar} ${styles.middleBar}`}></span>
+            <span className={`${styles.iconBar} ${styles.bottomBar}`}></span>
+          </span>
         </label>
         <div className={'col-auto ' + styles.menu}>
           <ul className={styles.menuList}>
