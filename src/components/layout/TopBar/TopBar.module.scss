@@ -39,4 +39,28 @@
       margin-right: 5px;
     }
   }
+
+  @media (max-width: 767px) {
+    .topMenu {
+      a {
+        font-size: 0;
+      }
+
+      .icon {
+        font-size: 13px;
+      }
+    }
+  }
+
+  @media (max-width: 520px) {
+    .topOptions ul li {
+      margin-right: 1rem;
+    }
+  }
+
+  @media (max-width: 469px) {
+    .topOptions ul li {
+      margin-right: 0.5rem;
+    }
+  }
 }
