@@ -12,8 +12,12 @@ const MenuBar = ({ children }) => (
         <div className={'col ' + styles.ProductSearchWrapper}>
           <ProductSearch />
         </div>
+        <input id='menu-toggle' type='checkbox' className={styles.menuToggle} />
+        <label className={styles.menuButtonContainer} htmlFor='menu-toggle'>
+          <div className={styles.menuButton}></div>
+        </label>
         <div className={'col-auto ' + styles.menu}>
-          <ul>
+          <ul className={styles.menuList}>
             <li>
               <a href='#' className={styles.active}>
                 Home
