@@ -152,14 +152,20 @@
       }
 
       .menu {
-        display: none;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.3s, opacity 0.2s linear;
+        position: absolute;
+        width: 100%;
+        z-index: 10;
       }
 
 
       input[type=checkbox].inputBox:checked~.menu {
-        display: block;
-        position: absolute;
-        width: 100%;
+        visibility: visible;
+        transition: visibility 0.3s, opacity 0.2s linear;
+        opacity: 1;
+
       }
 
       .menuList {
@@ -181,6 +187,12 @@
         padding: 0;
         border: 0;
         transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+
+        // added so all menu boxes have the same width when active or on hover
+        a {
+          width: 105px;
+          justify-content: center;
+        }
       }
 
 
@@ -191,9 +203,6 @@
         padding: 2em 0;
         width: 100%;
         align-items: center;
-      }
-
-      .menuList>li:not(:last-child) {
         border-bottom: 1px solid #444;
       }
     }
