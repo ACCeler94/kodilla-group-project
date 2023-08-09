@@ -64,3 +64,10 @@ $animation-time: 250ms;
 %hover-animation {
   transition-duration: $animation-time;
 }
+
+$category-hover-color: $white-color;
+$category-hover-bg-color: $primary;
+
+$category-hover-transition: 0.1s linear;
+
+$product-search-font-size: 14px;
