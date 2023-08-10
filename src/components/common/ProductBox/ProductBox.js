@@ -13,18 +13,20 @@ import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
 import { toggleFavorite } from '../../../redux/productsRedux';
 
-const ProductBox = ({ name, price, promo, stars, oldPrice, isFavorite, id }) => {
+const ProductBox = ({ name, price, promo, stars, imgSrc, oldPrice, isFavorite, id }) => {
+
   const dispatch = useDispatch();
   const handleFavorite = (e) => {
     e.preventDefault();
     dispatch(toggleFavorite({ id, isFavorite: !isFavorite }));
   };
 
-  return (
 
+  return (
     <div className={styles.root}>
       <div className={styles.photo}>
         {promo && <div className={styles.sale}>{promo}</div>}
+        <img src={imgSrc} alt={name} />
         <div className={styles.buttons}>
           <Button variant='small'>Quick View</Button>
           <Button variant='small'>
@@ -45,23 +47,23 @@ const ProductBox = ({ name, price, promo, stars, oldPrice, isFavorite, id }) => 
             </a>
           ))}
         </div>
-      </div>
-      <div className={styles.line}></div>
-      <div className={styles.actions}>
-        <div className={styles.outlines}>
-          <Button variant='outline' className={isFavorite ? styles.favorite : ''} onClick={handleFavorite} >
-            <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
-          </Button>
-          <Button variant='outline'>
-            <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
-          </Button>
-        </div>
-        <div className={styles.price}>
-          {// show discounted old price if it is given as a prop
-            oldPrice ? <span className={styles.oldPrice}>${oldPrice}</span> : ''}
-          <Button noHover variant='small' className={styles.priceContainer}>
-            $ {price}
-          </Button>
+        <div className={styles.line}></div>
+        <div className={styles.actions}>
+          <div className={styles.outlines}>
+            <Button variant='outline' className={isFavorite ? styles.favorite : ''} onClick={handleFavorite} >
+              <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
+            </Button>
+            <Button variant='outline'>
+              <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
+            </Button>
+          </div>
+          <div className={styles.price}>
+            {// show discounted old price if it is given as a prop
+              oldPrice ? <span className={styles.oldPrice}>${oldPrice}</span> : ''}
+            <Button noHover variant='small' className={styles.priceContainer}>
+              $ {price}
+            </Button>
+          </div>
         </div>
       </div>
     </div>
@@ -74,9 +76,11 @@ ProductBox.propTypes = {
   price: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
+  imgSrc: PropTypes.string,
   oldPrice: PropTypes.number,
   isFavorite: PropTypes.bool,
   id: PropTypes.string,
 };
 
 export default ProductBox;
+
