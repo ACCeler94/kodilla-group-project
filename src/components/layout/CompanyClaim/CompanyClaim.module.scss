@@ -72,4 +72,36 @@
       }
     }
   }
+
+  @media (max-width: 767px) {
+    .phoneNumber {
+      p {
+        font-size: 14px;
+        margin-right: -6rem;
+        margin-top: 30px;
+        left: 65%;
+        position: fixed;
+      }
+    }
+
+    :global(.container)> :global(.row) {
+      height: 200px;
+    }
+
+    img {
+      margin-left: -350px;
+      margin-top: -40px;
+    }
+
+    .cartBox {
+      margin-top: -40px;
+    }
+  }
+
+  @media (min-width: 460px) and (max-width: 550px) {
+    img {
+      margin-left: -280px;
+      left: 50%;
+    }
+  }
 }
