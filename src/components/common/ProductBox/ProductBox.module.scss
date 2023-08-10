@@ -80,6 +80,14 @@
     justify-content: space-between;
     align-items: center;
 
+    .outlines {
+
+      .favorite {
+        background-color: $veryDarkGray-color;
+        color: $white-color;
+      }
+    }
+
     .price {
       display: flex;
       align-items: center;
