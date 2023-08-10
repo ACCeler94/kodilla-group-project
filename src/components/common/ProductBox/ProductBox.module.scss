@@ -49,13 +49,6 @@
       line-height: 24px;
       letter-spacing: 1px;
     }
-
-    .stars {
-      a {
-        text-decoration: none;
-        color: rgb(42, 42, 42);
-      }
-    }
   }
 
   .line {
@@ -101,8 +94,10 @@
 
 .root:hover {
   @extend %hover-animation;
+
   .photo {
     @extend %hover-animation;
+
     .buttons {
       @extend %hover-animation;
       visibility: visible;
@@ -112,6 +107,7 @@
 
   .actions {
     @extend %hover-animation;
+
     .priceContainer {
       @extend %hover-animation;
       background-color: $primary;
