@@ -98,22 +98,25 @@
   }
 }
 
-
 .root:hover {
   @extend %hover-animation;
+
   .photo {
     @extend %hover-animation;
+    z-index: 1;
+    position: relative;
+
     .buttons {
-      @extend %hover-animation;
+
       visibility: visible;
       opacity: 1;
+      position: relative;
+      z-index: 0;
     }
   }
 
   .actions {
-    @extend %hover-animation;
     .priceContainer {
-      @extend %hover-animation;
       background-color: $primary;
     }
   }

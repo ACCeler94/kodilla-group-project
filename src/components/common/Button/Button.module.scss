@@ -36,8 +36,9 @@
   line-height: 22px;
 
   &:not(.noHover):hover {
+        @extend %hover-animation;
     background-color: $button-outline-color;
     color: $button-color;
-    @extend %hover-animation;
+
   }
 }

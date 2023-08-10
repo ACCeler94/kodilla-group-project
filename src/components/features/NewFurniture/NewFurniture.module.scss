@@ -21,15 +21,17 @@
         letter-spacing: 1px;
       }
 
-      &::before {
+      a:hover{
         @extend %hover-animation;
+
+      &::before {
         content: "";
         position: absolute;
         bottom: -4px;
         left: 0;
         width: 45px;
         border-bottom: 4px solid $primary;
-
+      }
       }
     }
 
@@ -53,7 +55,6 @@
 
             &.active,
             &:hover {
-              @extend %hover-animation;
               &::before {
                 @extend %hover-animation;
                 content: "";
