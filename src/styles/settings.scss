@@ -43,6 +43,8 @@ $product-border: $lightGray-color;
 $photo-bg: $blueWhite-color;
 $sale-text-color: $white-color;
 $line-border-color: $black-color;
+$average-rating-color: $black-color;
+$user-rating-color: $primary;
 
 /* FEATURE BOX */
 $featurebox-border: $gray-color;
@@ -67,6 +69,7 @@ $product-search-font-size: 14px;
 
 /*ANIMATION*/
 $animation-time: 250ms;
+
 //animation placeholder
 %hover-animation {
   transition-duration: $animation-time;
