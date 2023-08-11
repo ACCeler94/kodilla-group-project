@@ -44,27 +44,27 @@ const ProductBox = ({
         <div className={styles.starsWrapper}>
           <StarRating stars={stars} userRating={userRating} />
         </div>
-        <div className={styles.line}></div>
-        <div className={styles.actions}>
-          <div className={styles.outlines}>
-            <Button
-              variant='outline'
-              className={isFavorite ? styles.favorite : ''}
-              onClick={handleFavorite}
-            >
-              <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
-            </Button>
-            <Button variant='outline'>
-              <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
-            </Button>
-          </div>
-          <div className={styles.price}>
-            {// show discounted old price if it is given as a prop
-            oldPrice ? <span className={styles.oldPrice}>${oldPrice}</span> : ''}
-            <Button noHover variant='small' className={styles.priceContainer}>
-              $ {price}
-            </Button>
-          </div>
+      </div>
+      <div className={styles.line}></div>
+      <div className={styles.actions}>
+        <div className={styles.outlines}>
+          <Button
+            variant='outline'
+            className={isFavorite ? styles.favorite : ''}
+            onClick={handleFavorite}
+          >
+            <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
+          </Button>
+          <Button variant='outline'>
+            <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
+          </Button>
+        </div>
+        <div className={styles.price}>
+          {// show discounted old price if it is given as a prop
+          oldPrice ? <span className={styles.oldPrice}>${oldPrice}</span> : ''}
+          <Button noHover variant='small' className={styles.priceContainer}>
+            $ {price}
+          </Button>
         </div>
       </div>
     </div>
