@@ -33,7 +33,7 @@
     .buttons {
       visibility: hidden;
       opacity: 0;
-      transition: visibility 0.2s linear, opacity 0.2s linear;
+      transition: $product-box-button-visibility, $product-box-button-opacity;
       display: flex;
       justify-content: space-between;
     }
@@ -100,28 +100,24 @@
       }
 
       .priceContainer {
-        transition: background-color 0.2s linear;
+        transition: background-color $price-hover-transition
       }
     }
   }
 }
-
 
 .root:hover {
   @extend %hover-animation;
   .photo {
     @extend %hover-animation;
     .buttons {
-      @extend %hover-animation;
       visibility: visible;
       opacity: 1;
+      position: relative;
     }
   }
-
   .actions {
-    @extend %hover-animation;
     .priceContainer {
-      @extend %hover-animation;
       background-color: $primary;
     }
   }
