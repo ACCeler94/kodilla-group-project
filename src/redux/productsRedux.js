@@ -7,14 +7,20 @@ export const getNew = ({ products }) =>
 
 const createActionName = actionName => `app/products/${actionName}`;
 const TOGGLE_FAVORITE = createActionName('TOGGLE_FAVORITE');
+const RATE_PRODUCT = createActionName('RATE_PRODUCT');
 
 // actions
 export const toggleFavorite = payload => ({ type: TOGGLE_FAVORITE, payload });
+export const rateProduct = payload => ({ type: RATE_PRODUCT, payload });
 
 /* reducer */
 export default function reducer(statePart = [], action = {}) {
   switch (action.type) {
     case TOGGLE_FAVORITE:
+      return statePart.map(product =>
+        product.id === action.payload.id ? { ...product, ...action.payload } : product
+      );
+    case RATE_PRODUCT:
       return statePart.map(product =>
         product.id === action.payload.id ? { ...product, ...action.payload } : product
       );
