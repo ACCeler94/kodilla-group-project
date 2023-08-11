@@ -4,7 +4,7 @@
 // }
 
 .main {
-  background-color: #2a2a2a;
+  background-color: $veryDarkGray-color;
   color: $button-color;
   font-size: 16px;
   line-height: 24px;
@@ -36,8 +36,9 @@
   line-height: 22px;
 
   &:not(.noHover):hover {
+        @extend %hover-animation;
     background-color: $button-outline-color;
     color: $button-color;
-    @extend %hover-animation;
+
   }
 }

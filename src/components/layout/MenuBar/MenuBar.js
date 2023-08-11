@@ -8,12 +8,21 @@ import styles from './MenuBar.module.scss';
 const MenuBar = ({ children }) => (
   <div className={styles.root}>
     <div className='container'>
-      <div className='row align-items-center'>
-        <div className='col'>
+      <div className={'row align-items-center ' + styles.menuBarWrapper}>
+        <div className={'col ' + styles.ProductSearchWrapper}>
           <ProductSearch />
         </div>
+        <input id='dropdown' className={styles.inputBox} type='checkbox' />
+
+        <label htmlFor='dropdown' className={styles.dropdown}>
+          <span className={styles.hamburger}>
+            <span className={`${styles.iconBar} ${styles.topBar}`}></span>
+            <span className={`${styles.iconBar} ${styles.middleBar}`}></span>
+            <span className={`${styles.iconBar} ${styles.bottomBar}`}></span>
+          </span>
+        </label>
         <div className={'col-auto ' + styles.menu}>
-          <ul>
+          <ul className={styles.menuList}>
             <li>
               <a href='#' className={styles.active}>
                 Home

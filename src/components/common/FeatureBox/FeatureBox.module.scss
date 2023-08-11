@@ -30,6 +30,7 @@
       border-radius: 100%;
       background-color: $featurebox-bg;
       z-index: -1;
+
     }
 
     &::after {
@@ -57,8 +58,7 @@
       margin: 0;
     }
 
-    p {
-    }
+    p {}
   }
 
   &.active:hover {
@@ -74,8 +74,14 @@
     }
 
     .content {
-      @extend %hover-animation;
       color: $primary;
     }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .root {
+    min-height: 150px;
+    height: 60%;
   }
 }

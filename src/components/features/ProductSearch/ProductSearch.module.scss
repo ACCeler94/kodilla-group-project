@@ -44,6 +44,8 @@
   }
 
   .category:hover {
+    @extend %hover-animation;
+
     background-color: $category-hover-bg-color;
     color: $category-hover-color;
 
@@ -76,5 +78,27 @@
       background-color: transparent;
       outline: none;
     }
+  }
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .root {
+    min-width: 600px;
+    width: 70%;
+
+    .searchField {
+      width: 70%;
+
+      input {
+        width: 95%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .root {
+    min-width: 100%;
   }
 }
