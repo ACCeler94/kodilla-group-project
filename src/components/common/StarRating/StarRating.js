@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './StarRating.module.scss';
@@ -9,6 +9,8 @@ import { useDispatch } from 'react-redux';
 import { rateProduct } from '../../../redux/productsRedux';
 
 const StarRating = ({ stars, userRating, id }) => {
+  const [userHoveredIndex, setUserHoveredIndex] = useState(0);
+
   const dispatch = useDispatch();
 
   const handleRating = e => {
@@ -18,18 +20,14 @@ const StarRating = ({ stars, userRating, id }) => {
   };
 
   const checkUserRating = i => {
-    if (userRating) {
-      if (i <= userRating) {
-        return <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>;
-      } else {
-        return <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>;
-      }
+    if (
+      (userHoveredIndex && i <= userHoveredIndex) ||
+      (!userHoveredIndex && userRating && i <= userRating) ||
+      (!userHoveredIndex && !userRating && i <= stars)
+    ) {
+      return <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>;
     } else {
-      if (i <= stars) {
-        return <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>;
-      } else {
-        return <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>;
-      }
+      return <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>;
     }
   };
 
@@ -40,8 +38,10 @@ const StarRating = ({ stars, userRating, id }) => {
           key={i}
           href='#'
           data-index={i}
-          className={userRating ? styles.userRated : ''}
+          className={userRating || userHoveredIndex ? styles.userRated : ''}
           onClick={handleRating}
+          onMouseEnter={() => setUserHoveredIndex(i)}
+          onMouseLeave={() => setUserHoveredIndex(0)}
         >
           {checkUserRating(i)}
         </a>

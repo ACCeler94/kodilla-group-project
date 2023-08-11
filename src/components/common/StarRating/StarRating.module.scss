@@ -12,16 +12,4 @@
   a.userRated {
     color: $user-rating-color;
   }
-
-
-}
-
-.root:hover {
-  a {
-    color: $user-rating-color;
-  }
-
-  a:hover~a {
-    color: $average-rating-color;
-  }
 }
