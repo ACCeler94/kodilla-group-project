@@ -1,0 +1,6 @@
+diff a/src/components/layout/MenuBar/MenuBar.js b/src/components/layout/MenuBar/MenuBar.js	(rejected hunks)
+@@ -15,2 +15,2 @@ const MenuBar = ({ children }) => (
+-        <input id="menu-toggle" type="checkbox" className={styles.menuToggle} />
+-        <label className={styles.menuButtonContainer} htmlFor="menu-toggle">
++        <input id='menu-toggle' type='checkbox' className={styles.menuToggle} />
++        <label className={styles.menuButtonContainer} htmlFor='menu-toggle'>
