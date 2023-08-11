@@ -44,6 +44,8 @@
   }
 
   .category:hover {
+    @extend %hover-animation;
+
     background-color: $category-hover-bg-color;
     color: $category-hover-color;
 

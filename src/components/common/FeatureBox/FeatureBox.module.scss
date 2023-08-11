@@ -30,6 +30,7 @@
       border-radius: 100%;
       background-color: $featurebox-bg;
       z-index: -1;
+
     }
 
     &::after {
@@ -73,7 +74,6 @@
     }
 
     .content {
-      @extend %hover-animation;
       color: $primary;
     }
   }

@@ -96,7 +96,6 @@ ProductBox.propTypes = {
   imgSrc: PropTypes.string,
   oldPrice: PropTypes.number,
   isFavorite: PropTypes.bool,
-  id: PropTypes.string,
 };
 
 export default ProductBox;
