@@ -104,6 +104,10 @@
       }
     }
   }
+  .fav {
+    color: #ffff;
+    background-color: $primary;
+  }
 }
 
 .root:hover {
@@ -121,4 +125,5 @@
       background-color: $primary;
     }
   }
+
 }

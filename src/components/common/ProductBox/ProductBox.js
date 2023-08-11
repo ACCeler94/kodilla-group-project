@@ -80,6 +80,7 @@ ProductBox.propTypes = {
   oldPrice: PropTypes.number,
   isFavorite: PropTypes.bool,
   id: PropTypes.string,
+
 };
 
 export default ProductBox;
