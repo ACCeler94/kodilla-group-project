@@ -12,12 +12,27 @@ import {
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import { addProductToCompare } from '../../../redux/comparableProductsRedux';
+import { toggleFavorite } from '../../../redux/productsRedux';
 
-const ProductBox = ({ id, name, price, promo, stars, imgSrc, oldPrice }) => {
+const ProductBox = ({
+  name,
+  price,
+  promo,
+  stars,
+  imgSrc,
+  oldPrice,
+  isFavorite,
+  id,
+}) => {
   const dispatch = useDispatch();
   function onAddToCompare(id, imgSrc) {
     dispatch(addProductToCompare({ id, imgSrc }));
   }
+
+  const handleFavorite = e => {
+    e.preventDefault();
+    dispatch(toggleFavorite({ id, isFavorite: !isFavorite }));
+  };
 
   return (
     <div className={styles.root}>
@@ -48,7 +63,11 @@ const ProductBox = ({ id, name, price, promo, stars, imgSrc, oldPrice }) => {
       <div className={styles.line}></div>
       <div className={styles.actions}>
         <div className={styles.outlines}>
-          <Button variant='outline'>
+          <Button
+            variant='outline'
+            className={isFavorite ? styles.favorite : ''}
+            onClick={handleFavorite}
+          >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
           <Button variant='outline' onClick={() => onAddToCompare(id, imgSrc)}>
@@ -76,6 +95,8 @@ ProductBox.propTypes = {
   stars: PropTypes.number,
   imgSrc: PropTypes.string,
   oldPrice: PropTypes.number,
+  isFavorite: PropTypes.bool,
+  id: PropTypes.string,
 };
 
 export default ProductBox;

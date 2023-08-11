@@ -57,8 +57,7 @@
       margin: 0;
     }
 
-    p {
-    }
+    p {}
   }
 
   &.active:hover {
@@ -77,5 +76,12 @@
       @extend %hover-animation;
       color: $primary;
     }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .root {
+    min-height: 150px;
+    height: 60%;
   }
 }
