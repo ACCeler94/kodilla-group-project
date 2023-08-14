@@ -1,0 +1,15 @@
+@import "../../../styles/settings.scss";
+
+.root {
+  width: fit-content;
+  height: 1.4em;
+
+  a {
+    text-decoration: none;
+    color: $average-rating-color;
+  }
+
+  a.userRated {
+    color: $user-rating-color;
+  }
+}
