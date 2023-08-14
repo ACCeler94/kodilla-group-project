@@ -27,7 +27,6 @@ const initialState = {
       category: 'bed',
       price: 30,
       stars: 2,
-      userRating: 0,
       promo: 'sale',
       newFurniture: true,
       imgSrc:
@@ -43,7 +42,6 @@ const initialState = {
       stars: 2,
       promo: 'sale',
       newFurniture: true,
-
       isFavorite: false,
       imgSrc:
         'https://img.freepik.com/free-photo/empty-flat-interrior-with-elements-decoration_1303-23910.jpg?w=1060&t=st=1691092096~exp=1691092696~hmac=5553d73cef167f9636899c7c10ed201833aa7322872624cf09c9321d8bf79381',
