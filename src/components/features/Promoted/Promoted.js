@@ -13,7 +13,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const Promoted = () => {
-
   /* This selector is only to display picture for presentation into right column */
   const picForPresentation = useSelector(getAll);
 
