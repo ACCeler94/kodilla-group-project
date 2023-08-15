@@ -25,8 +25,8 @@ const ProductBox = ({
   id,
 }) => {
   const dispatch = useDispatch();
-  function onAddToCompare(id, imgSrc) {
-    dispatch(addProductToCompare({ id, imgSrc }));
+  function onAddToCompare(product) {
+    dispatch(addProductToCompare(product));
   }
 
   const handleFavorite = e => {
@@ -74,7 +74,16 @@ const ProductBox = ({
             variant='outline'
             onClick={e => {
               e.preventDefault();
-              onAddToCompare(id, imgSrc);
+              onAddToCompare({
+                name,
+                price,
+                promo,
+                stars,
+                imgSrc,
+                oldPrice,
+                isFavorite,
+                id,
+              });
             }}
           >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
