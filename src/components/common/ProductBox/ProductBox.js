@@ -1,26 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faStar,
-  faExchangeAlt,
-  faShoppingBasket,
-} from '@fortawesome/free-solid-svg-icons';
-import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faExchangeAlt, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
-import { useDispatch } from 'react-redux';
+import { addProductToCompare } from '../../../redux/comparableProductsRedux';
 import { toggleFavorite } from '../../../redux/productsRedux';
+import StarRating from '../StarRating/StarRating';
 
-const ProductBox = ({ name, price, promo, stars, imgSrc, oldPrice, isFavorite, id }) => {
-
+const ProductBox = ({
+  name,
+  price,
+  promo,
+  stars,
+  userRating,
+  imgSrc,
+  oldPrice,
+  isFavorite,
+  id,
+}) => {
   const dispatch = useDispatch();
-  const handleFavorite = (e) => {
+  function onAddToCompare(product) {
+    dispatch(addProductToCompare(product));
+  }
+
+  const handleFavorite = e => {
     e.preventDefault();
     dispatch(toggleFavorite({ id, isFavorite: !isFavorite }));
   };
-
 
   return (
     <div className={styles.root}>
@@ -36,34 +46,46 @@ const ProductBox = ({ name, price, promo, stars, imgSrc, oldPrice, isFavorite, i
       </div>
       <div className={styles.content}>
         <h5>{name}</h5>
-        <div className={styles.stars}>
-          {[1, 2, 3, 4, 5].map(i => (
-            <a key={i} href='#'>
-              {i <= stars ? (
-                <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
-              ) : (
-                <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
-              )}
-            </a>
-          ))}
+        <div className={styles.starsWrapper}>
+          <StarRating stars={stars} userRating={userRating} id={id} />
         </div>
-        <div className={styles.line}></div>
-        <div className={styles.actions}>
-          <div className={styles.outlines}>
-            <Button variant='outline' className={isFavorite ? styles.favorite : ''} onClick={handleFavorite} >
-              <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
-            </Button>
-            <Button variant='outline'>
-              <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
-            </Button>
-          </div>
-          <div className={styles.price}>
-            {// show discounted old price if it is given as a prop
-              oldPrice ? <span className={styles.oldPrice}>${oldPrice}</span> : ''}
-            <Button noHover variant='small' className={styles.priceContainer}>
-              $ {price}
-            </Button>
-          </div>
+      </div>
+      <div className={styles.line}></div>
+      <div className={styles.actions}>
+        <div className={styles.outlines}>
+          <Button
+            variant='outline'
+            className={isFavorite ? styles.favorite : ''}
+            onClick={handleFavorite}
+          >
+            <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
+          </Button>
+
+          <Button
+            variant='outline'
+            onClick={e => {
+              e.preventDefault();
+              onAddToCompare({
+                name,
+                price,
+                promo,
+                stars,
+                imgSrc,
+                oldPrice,
+                isFavorite,
+                id,
+              });
+            }}
+          >
+            <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
+          </Button>
+        </div>
+        <div className={styles.price}>
+          {// show discounted old price if it is given as a prop
+          oldPrice ? <span className={styles.oldPrice}>${oldPrice}</span> : ''}
+          <Button noHover variant='small' className={styles.priceContainer}>
+            $ {price}
+          </Button>
         </div>
       </div>
     </div>
@@ -72,16 +94,15 @@ const ProductBox = ({ name, price, promo, stars, imgSrc, oldPrice, isFavorite, i
 
 ProductBox.propTypes = {
   children: PropTypes.node,
+  id: PropTypes.string,
   name: PropTypes.string,
   price: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
+  userRating: PropTypes.number,
   imgSrc: PropTypes.string,
   oldPrice: PropTypes.number,
   isFavorite: PropTypes.bool,
-  id: PropTypes.string,
-
 };
 
 export default ProductBox;
-

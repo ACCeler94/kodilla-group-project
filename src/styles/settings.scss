@@ -44,10 +44,12 @@ $product-border: $lightGray-color;
 $photo-bg: $blueWhite-color;
 $sale-text-color: $white-color;
 $line-border-color: $black-color;
-$price-hover-transition:0.2s linear;
+$price-hover-transition: 0.2s linear;
 $product-box-button-visibility: 0.2s linear;
 $product-box-button-opacity: 0.2s linear;
 
+$average-rating-color: $black-color;
+$user-rating-color: $primary;
 
 /* FEATURE BOX */
 $featurebox-border: $gray-color;
@@ -73,11 +75,9 @@ $product-search-font-size: 14px;
 
 /*ANIMATION*/
 $animation-time: 250ms;
+
 //animation placeholder
 %hover-animation {
   transition-duration: $animation-time;
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-
-
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
-
