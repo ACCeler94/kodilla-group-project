@@ -1,0 +1,43 @@
+@import "../../../styles/settings.scss";
+
+.root {
+  margin-bottom: 10%;
+
+  a {
+    text-decoration: none;
+    color: $black-color;
+  }
+
+  .bannerWrapper {
+    display: flex;
+    height: 350px;
+
+    .bigTile {
+      position: relative;
+      width: 50%;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+
+    .smallTilesWrapper {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      height: 350px;
+
+      .smallTile {
+        display: flex;
+        height: 50%;
+
+        img {
+          height: 100%;
+          width: 30%;
+        }
+      }
+    }
+  }
+}
