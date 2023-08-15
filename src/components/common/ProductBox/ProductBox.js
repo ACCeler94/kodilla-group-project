@@ -70,7 +70,13 @@ const ProductBox = ({
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
-          <Button variant='outline' onClick={() => onAddToCompare(id, imgSrc)}>
+          <Button
+            variant='outline'
+            onClick={e => {
+              e.preventDefault();
+              onAddToCompare(id, imgSrc);
+            }}
+          >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>
