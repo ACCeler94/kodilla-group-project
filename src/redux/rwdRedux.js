@@ -9,7 +9,10 @@ const createActionName = name => `app/${reducerName}/${name}`;
 const SET_RESPONSIVE_MODE = createActionName('SET_RESPONSIVE_MODE');
 
 /* action creators */
-export const setResponsiveMode = payload => ({ payload, type: SET_RESPONSIVE_MODE });
+export const setResponsiveMode = mode => ({
+  payload: mode,
+  type: SET_RESPONSIVE_MODE,
+});
 
 /* reducer */
 
@@ -18,7 +21,7 @@ export default function reducer(statePart = [], action = {}) {
     case SET_RESPONSIVE_MODE: {
       return {
         ...statePart,
-        responsiveMode: action.payload,
+        mode: action.payload,
       };
     }
     default:

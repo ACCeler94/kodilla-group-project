@@ -34,7 +34,6 @@ const initialState = {
       // old price added for testing purposes
       oldPrice: 35,
       isFavorite: false,
-
     },
     {
       id: 'aenean-ru-bristique-3',
@@ -285,6 +284,7 @@ const initialState = {
   cart: {
     products: [],
   },
+  mode: 'laptop',
 };
 
 export default initialState;

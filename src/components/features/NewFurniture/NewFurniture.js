@@ -4,10 +4,15 @@ import PropTypes from 'prop-types';
 import styles from './NewFurniture.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import Swipeable from '../../views/Swipeable/Swipeable';
+import { useSelector } from 'react-redux';
+
+import { getMode } from '../../../redux/rwdRedux';
 
 const NewFurniture = props => {
   const [activePage, setActivePage] = useState(0);
   const [activeCategory, setActiveCategory] = useState('bed');
+
+  const responsiveMode = useSelector(getMode);
 
   const handlePageChange = newPage => {
     setActivePage(newPage);
