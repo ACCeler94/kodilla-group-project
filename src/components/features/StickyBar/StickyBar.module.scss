@@ -1,0 +1,45 @@
+.stickyBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color:#ffe8ca;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .selectedProduct {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-right: 12px;
+
+    img:hover + .buttonRemoveProduct {
+      display: block;
+    }
+
+    .buttonRemoveProduct {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: none;
+      padding: 4px;
+      cursor: pointer;
+    }
+  }
+
+  .compareButton {
+    background-color: #d58e32;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+  }
+
+  img {
+    max-width: 150px;
+  max-height: 150px;
+  }
+}
+

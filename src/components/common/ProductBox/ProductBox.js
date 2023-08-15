@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExchangeAlt, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
-import { useDispatch } from 'react-redux';
+import { addProductToCompare } from '../../../redux/comparableProductsRedux';
 import { toggleFavorite } from '../../../redux/productsRedux';
 import StarRating from '../StarRating/StarRating';
 
@@ -22,6 +23,10 @@ const ProductBox = ({
   id,
 }) => {
   const dispatch = useDispatch();
+  function onAddToCompare(product) {
+    dispatch(addProductToCompare(product));
+  }
+
   const handleFavorite = e => {
     e.preventDefault();
     dispatch(toggleFavorite({ id, isFavorite: !isFavorite }));
@@ -55,7 +60,23 @@ const ProductBox = ({
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
-          <Button variant='outline'>
+
+          <Button
+            variant='outline'
+            onClick={e => {
+              e.preventDefault();
+              onAddToCompare({
+                name,
+                price,
+                promo,
+                stars,
+                imgSrc,
+                oldPrice,
+                isFavorite,
+                id,
+              });
+            }}
+          >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
         </div>
@@ -73,6 +94,7 @@ const ProductBox = ({
 
 ProductBox.propTypes = {
   children: PropTypes.node,
+  id: PropTypes.string,
   name: PropTypes.string,
   price: PropTypes.number,
   promo: PropTypes.string,
@@ -81,7 +103,6 @@ ProductBox.propTypes = {
   imgSrc: PropTypes.string,
   oldPrice: PropTypes.number,
   isFavorite: PropTypes.bool,
-  id: PropTypes.string,
 };
 
 export default ProductBox;
