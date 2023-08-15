@@ -4,21 +4,19 @@ import { useDispatch } from 'react-redux';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faStar,
-  faExchangeAlt,
-  faShoppingBasket,
-} from '@fortawesome/free-solid-svg-icons';
-import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faExchangeAlt, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import { addProductToCompare } from '../../../redux/comparableProductsRedux';
 import { toggleFavorite } from '../../../redux/productsRedux';
+import StarRating from '../StarRating/StarRating';
 
 const ProductBox = ({
   name,
   price,
   promo,
   stars,
+  userRating,
   imgSrc,
   oldPrice,
   isFavorite,
@@ -48,16 +46,8 @@ const ProductBox = ({
       </div>
       <div className={styles.content}>
         <h5>{name}</h5>
-        <div className={styles.stars}>
-          {[1, 2, 3, 4, 5].map(i => (
-            <a key={i} href='#'>
-              {i <= stars ? (
-                <FontAwesomeIcon icon={faStar}>{i} stars</FontAwesomeIcon>
-              ) : (
-                <FontAwesomeIcon icon={farStar}>{i} stars</FontAwesomeIcon>
-              )}
-            </a>
-          ))}
+        <div className={styles.starsWrapper}>
+          <StarRating stars={stars} userRating={userRating} id={id} />
         </div>
       </div>
       <div className={styles.line}></div>
@@ -70,6 +60,7 @@ const ProductBox = ({
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
+
           <Button
             variant='outline'
             onClick={e => {
@@ -108,6 +99,7 @@ ProductBox.propTypes = {
   price: PropTypes.number,
   promo: PropTypes.string,
   stars: PropTypes.number,
+  userRating: PropTypes.number,
   imgSrc: PropTypes.string,
   oldPrice: PropTypes.number,
   isFavorite: PropTypes.bool,
