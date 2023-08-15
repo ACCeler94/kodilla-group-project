@@ -33,10 +33,18 @@ const NewFurniture = props => {
       setActivePage(activePage - 1);
     }
   };
+
+  let productsPerPage = 8;
+  if (responsiveMode.mode === 'tablet') {
+    productsPerPage = 2;
+  } else if (responsiveMode.mode === 'mobile') {
+    productsPerPage = 1;
+  }
+
   const { categories, products } = props;
 
   const categoryProducts = products.filter(item => item.category === activeCategory);
-  const pagesCount = Math.ceil(categoryProducts.length / 8);
+  const pagesCount = Math.ceil(categoryProducts.length / productsPerPage);
 
   const dots = [];
   for (let i = 0; i < pagesCount; i++) {
@@ -81,11 +89,13 @@ const NewFurniture = props => {
         </div>
         <Swipeable leftAction={leftAction} rightAction={rightAction}>
           <div className='row'>
-            {categoryProducts.slice(activePage * 8, (activePage + 1) * 8).map(item => (
-              <div key={item.id} className='col-12 col-sm-6 col-md-4 col-xl-3'>
-                <ProductBox {...item} />
-              </div>
-            ))}
+            {categoryProducts
+              .slice(activePage * productsPerPage, (activePage + 1) * productsPerPage)
+              .map(item => (
+                <div key={item.id} className='col-12 col-sm-6 col-md-4 col-xl-3'>
+                  <ProductBox {...item} />
+                </div>
+              ))}
           </div>
         </Swipeable>
       </div>
