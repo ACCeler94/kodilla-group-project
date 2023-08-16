@@ -28,25 +28,54 @@
   position: relative;
   display: flex;
   justify-content: space-between;
-  bottom: 116px;
+  bottom: 105px;
 }
 
+.brandIcon {
+  font-size: 7px;
+ }
+
 .leftButton {
-  height: 80px;
+  height: 60px;
+  width: 15px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .rightButton {
-  height: 80px;
+  height: 60px;
+  width: 15px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.brandsContainer {
+  position: relative;
 
+.brandImages {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  top: 45px;
+  left: 43px;
 
+  img{
+    border: 2px solid #e2e2e2;
+    width: 90px;
+    height: 60px;
+    margin-right: 13px;
+    object-fit: cover;
+  }
+}
+}
 
 
 
