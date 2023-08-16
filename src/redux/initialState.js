@@ -282,7 +282,8 @@ const initialState = {
   cart: {
     products: [],
   },
-  comparableProducts: [], // array with selected products for comparison
+  mode: 'laptop',
+  comparableProducts: [],
 };
 
 export default initialState;
