@@ -25,6 +25,7 @@
     .bigTile {
       width: 50%;
       margin: 10px;
+      margin-left: 0;
 
       .textContainer {
         color: $white-color;
@@ -70,11 +71,12 @@
       display: flex;
       flex-direction: column;
       height: $banner-height;
+      margin-left: 10px;
 
       .smallTile {
         display: flex;
         height: 50%;
-        margin: 10px;
+        margin: 10px 0;
         align-items: center;
         justify-content: space-between;
 
@@ -142,6 +144,7 @@
 
       .smallTilesWrapper {
         width: 100%;
+        margin: 0;
 
         .smallTile {
           margin: 10px 0;
