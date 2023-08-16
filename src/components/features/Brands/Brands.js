@@ -10,7 +10,7 @@ const Brands = () => {
 
   const brandImages = products.map(product =>
     product.brand ? product.brand.img : null
-  ); // Sprawdzamy, czy brand istnieje, zanim uzyskamy dostęp do img
+  );
 
   const filteredBrandImages = brandImages.filter(imgSrc => imgSrc !== null);
 
