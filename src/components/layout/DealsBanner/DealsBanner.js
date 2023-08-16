@@ -4,8 +4,6 @@ import { getProductById } from '../../../redux/productsRedux';
 import styles from './DealsBanner.module.scss';
 
 const DealsBanner = () => {
-  // I was told to take first 3 products from the state but I thought that this modular way will be more customizable for the future
-
   // change these product IDs to change products visible in Deals banner
   const bigBannerItemId = 'aenean-ru-bristique-1';
   const secondBannerItemId = 'aenean-ru-bristique-3';
