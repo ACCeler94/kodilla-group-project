@@ -1,0 +1,52 @@
+@import "../../../styles/settings.scss";
+
+.brandsLine {
+  width: 100%;
+  height: 150px;
+  position: relative;
+}
+
+.brandsLine::before {
+  content: "";
+  position: absolute;
+  bottom: 130px;
+  left: 0;
+  width: 100%;
+  border-bottom: 2px solid #e2e2e2;
+}
+
+.brandsLine::after {
+  content: "";
+  position: absolute;
+  top: 130px;
+  left: 0;
+  width: 100%;
+  border-bottom: 2px solid #e2e2e2;
+}
+
+.buttons {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  bottom: 116px;
+}
+
+.leftButton {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.rightButton {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+
+
+
+
