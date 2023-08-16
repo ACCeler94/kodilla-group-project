@@ -7,7 +7,7 @@ const DealsBanner = () => {
   // I was told to take first 3 products from the state but I thought that this modular way will be more customizable for the future
 
   // change these product IDs to change products visible in Deals banner
-  const bigBannerItemId = 'aenean-ru-bristique-2';
+  const bigBannerItemId = 'aenean-ru-bristique-1';
   const secondBannerItemId = 'aenean-ru-bristique-3';
   const thirdBannerItemId = 'aenean-ru-bristique-6';
 
@@ -24,7 +24,7 @@ const DealsBanner = () => {
       <div className='container'>
         <div className={styles.bannerWrapper}>
           <div className={styles.bigTile}>
-            <a href='#'>
+            <a href='#' className={styles.overlay}>
               <img src={bigBannerItem.imgSrc} alt='furniture on sale' />
               <div className={styles.textContainer}>
                 <span className={styles.bannerItemTitle}>
@@ -32,9 +32,9 @@ const DealsBanner = () => {
                   <br />
                   <span className={styles.highlight}>CHAIR</span>
                 </span>
-              </div>
-              <div className={styles.discountBox}>
-                <span>-20%</span>
+                <div className={styles.discountBox}>
+                  <span>-20%</span>
+                </div>
               </div>
             </a>
           </div>
@@ -43,12 +43,12 @@ const DealsBanner = () => {
               <img src={secondBannerItem.imgSrc} alt='furniture collection on sale' />
               <div className={styles.textContainer}>
                 <span className={styles.bannerItemTitle}>
-                  <span className={styles.highlight}>COFFEE</span>
+                  <span className={styles.highlight}>COFFEE </span>
                   TABLES
                   <br />
                   <span className={styles.subtitle}>COLLECTION</span>
                   <br />
-                  <span className={styles.priceHighlight}>$200</span>
+                  <span className={styles.priceHighlight}>$200.00</span>
                 </span>
               </div>
             </a>
@@ -56,7 +56,7 @@ const DealsBanner = () => {
               <img src={thirdBannerItem.imgSrc} alt='furniture collection on sale' />
               <div className={styles.textContainer}>
                 <span className={styles.bannerItemTitle}>
-                  <span className={styles.highlight}>SPECIAL</span>
+                  <span className={styles.highlight}>SPECIAL </span>
                   COLLECTION
                   <br />
                   <span className={styles.subtitle}>SAVE UP TO 45% ON FURNITURE</span>
