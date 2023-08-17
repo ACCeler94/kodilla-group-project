@@ -10,7 +10,6 @@ import Button from '../Button/Button';
 import { addProductToCompare } from '../../../redux/comparableProductsRedux';
 import { toggleFavorite } from '../../../redux/productsRedux';
 import StarRating from '../StarRating/StarRating';
-import { openPopup } from '../../../redux/popupRedux';
 import { useState } from 'react';
 
 const ProductBox = ({
@@ -41,12 +40,27 @@ const ProductBox = ({
     setpopupIsOpen(!popupIsOpen);
   };
 
+  const handlePopupClose = () => {
+    setpopupIsOpen(false);
+  };
+
   return (
     <div className={styles.root}>
       <div className={`${styles.popupContainer} ${popupIsOpen ? styles.active : ''}`}>
         <div className={styles.popupBox}>
+          <div className={styles.imgContainer}></div>
           <img src={imgSrc} alt={name} />
-          <div className={styles.popupDetailsContainer}>${name}</div>
+          <div className={styles.popupDetailsContainer}>
+            <div className={styles.detailName}>{name}</div>
+            <div className={styles.detailId}>id: {id}</div>
+            <div className={styles.detilPrice}>${price}</div>
+            <div className={styles.detilOldPrice}>OLD PRICE: ${oldPrice}</div>
+            <div className={styles.detilPromo}>PROMOTION: {promo}</div>
+            <div className={styles.detilStars}>NUMBER OF STARS: {stars}</div>
+          </div>
+          <button className={styles.xButton} onClick={handlePopupClose}>
+            X
+          </button>
         </div>
       </div>
       <div className={styles.photo}>
