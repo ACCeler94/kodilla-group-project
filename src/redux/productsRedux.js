@@ -7,6 +7,9 @@ export const getProductById = ({ products }, id) =>
 export const getNew = ({ products }) =>
   products.filter(item => item.newFurniture === true);
 
+export const getPromoted = ({ products }) =>
+  products.filter(item => item.promoted === true);
+
 const createActionName = actionName => `app/products/${actionName}`;
 const TOGGLE_FAVORITE = createActionName('TOGGLE_FAVORITE');
 const RATE_PRODUCT = createActionName('RATE_PRODUCT');
@@ -22,10 +25,12 @@ export default function reducer(statePart = [], action = {}) {
       return statePart.map(product =>
         product.id === action.payload.id ? { ...product, ...action.payload } : product
       );
+
     case RATE_PRODUCT:
       return statePart.map(product =>
         product.id === action.payload.id ? { ...product, ...action.payload } : product
       );
+
     default:
       return statePart;
   }
