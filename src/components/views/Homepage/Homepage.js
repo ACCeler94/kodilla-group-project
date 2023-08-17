@@ -5,10 +5,12 @@ import styles from './Homepage.module.scss';
 
 import FeatureBoxes from '../../features/FeatureBoxes/FeatureBoxes';
 import NewFurniture from '../../features/NewFurniture/NewFurnitureContainer';
+import DealsBanner from '../../layout/DealsBanner/DealsBanner';
 
 const Homepage = () => (
   <div className={styles.root}>
     <FeatureBoxes />
+    <DealsBanner />
     <NewFurniture />
   </div>
 );
