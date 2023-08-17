@@ -42,7 +42,7 @@ const Promoted = () => {
                 <Button variant='outline' className={styles.cartBut}>
                   <FontAwesomeIcon
                     icon={faShoppingBasket}
-                    className={styles.butIcon}
+                    className={'mr-2 ' + styles.butIcon}
                   ></FontAwesomeIcon>
                   ADD TO CART
                 </Button>
