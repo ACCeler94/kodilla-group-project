@@ -10,6 +10,8 @@ import Button from '../Button/Button';
 import { addProductToCompare } from '../../../redux/comparableProductsRedux';
 import { toggleFavorite } from '../../../redux/productsRedux';
 import StarRating from '../StarRating/StarRating';
+import { openPopup } from '../../../redux/popupRedux';
+import { useState } from 'react';
 
 const ProductBox = ({
   name,
@@ -22,6 +24,8 @@ const ProductBox = ({
   isFavorite,
   id,
 }) => {
+  const [popupIsOpen, setpopupIsOpen] = useState(false);
+
   const dispatch = useDispatch();
   function onAddToCompare(product) {
     dispatch(addProductToCompare(product));
@@ -32,13 +36,26 @@ const ProductBox = ({
     dispatch(toggleFavorite({ id, isFavorite: !isFavorite }));
   };
 
+  const handlePopup = e => {
+    e.preventDefault();
+    setpopupIsOpen(!popupIsOpen);
+  };
+
   return (
     <div className={styles.root}>
+      <div className={`${styles.popupContainer} ${popupIsOpen ? styles.active : ''}`}>
+        <div className={styles.popupBox}>
+          <img src={imgSrc} alt={name} />
+          <div className={styles.popupDetailsContainer}>${name}</div>
+        </div>
+      </div>
       <div className={styles.photo}>
         {promo && <div className={styles.sale}>{promo}</div>}
         <img src={imgSrc} alt={name} />
         <div className={styles.buttons}>
-          <Button variant='small'>Quick View</Button>
+          <Button variant='small' onClick={handlePopup}>
+            Quick View
+          </Button>
           <Button variant='small'>
             <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
           </Button>
