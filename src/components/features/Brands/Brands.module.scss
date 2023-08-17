@@ -12,7 +12,7 @@
   bottom: 130px;
   left: 0;
   width: 100%;
-  border-bottom: 2px solid #e2e2e2;
+  border-bottom: 2px solid $darken-white-color;
 }
 
 .brandsLine::after {
@@ -21,11 +21,11 @@
   top: 130px;
   left: 0;
   width: 100%;
-  border-bottom: 2px solid #e2e2e2;
+  border-bottom: 2px solid $darken-white-color;
 }
 
 .brandIcon {
-  font-size: 7px;
+  font-size: $icons-font-size;
  }
 
 .leftButton {
@@ -33,10 +33,7 @@
   width: 15px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .rightButton {
@@ -44,10 +41,7 @@
   width: 15px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .brandImages {
@@ -59,7 +53,7 @@
   transform: translateY(-120px);
 
   img{
-    border: 2px solid #e2e2e2;
+    border: 2px solid $darken-white-color;
     width: 90px;
     height: 60px;
     object-fit: cover;
