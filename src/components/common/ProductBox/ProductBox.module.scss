@@ -136,7 +136,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: white;
+  background: $popup-background-color;
   padding: 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -146,8 +146,6 @@
 .popupContainer.active {
   display:inline-block;
 }
-
-
 
 .popupBox{
   display: flex;
@@ -169,10 +167,11 @@ img {
   left: 0;
   background: none;
   border: none;
-  font-size: 18px;
+  font-size: $popup-button-font-size;
   cursor: pointer;
   &:hover {
-    background-color: #A5A5A5;
+    background-color: $gray-color;
+    border-radius: 10px;
   }
 }
 
@@ -186,21 +185,21 @@ img {
   width: 302px;
 
   .detailName{
-    font-size: 25px;
+    font-size: $popup-detail-name-font-size;
     font-weight: 600;
   }
   .detailId{
-    color:#A5A5A5;
-    font-size: 12px;
+    color:$gray-color;
+    font-size: $popup-detail-id-font-size;
   }
 
   .detilPrice{
-    font-size: 35px;
+    font-size: $popup-detail-old-price-font-size;
     font-weight: 600;
   }
   .detilOldPrice{
     font-weight: 600;
-    color:#A5A5A5;
+    color:$gray-color;
   }
 
   .detilPromo,

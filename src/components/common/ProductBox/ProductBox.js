@@ -48,7 +48,6 @@ const ProductBox = ({
     <div className={styles.root}>
       <div className={`${styles.popupContainer} ${popupIsOpen ? styles.active : ''}`}>
         <div className={styles.popupBox}>
-          <div className={styles.imgContainer}></div>
           <img src={imgSrc} alt={name} />
           <div className={styles.popupDetailsContainer}>
             <div className={styles.detailName}>{name}</div>
