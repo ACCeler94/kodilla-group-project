@@ -20,11 +20,13 @@ const initialState = {
         'https://img.freepik.com/free-photo/mid-century-modern-living-room-interior-design-with-monstera-tree_53876-129804.jpg?w=1060&t=st=1691091913~exp=1691092513~hmac=69edab31759abb4a970ac9b079d43ab465a4892110676ffb30d8f1410acd2d9f',
       oldPrice: 35,
       isFavorite: true,
+      promoted: true,
       brand: {
         name: 'brand1',
         img:
           'https://images.unsplash.com/photo-1529697216570-f48ef8f6b2dd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGFzdGVsfGVufDB8fDB8fHww&auto=format&fit=crop&w=400&q=60',
       },
+      
     },
     {
       id: 'aenean-ru-bristique-2',

@@ -4,12 +4,14 @@ import { useDispatch } from 'react-redux';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExchangeAlt, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
-import { faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faExchangeAlt, faShoppingBasket, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import { addProductToCompare } from '../../../redux/comparableProductsRedux';
 import { toggleFavorite } from '../../../redux/productsRedux';
 import StarRating from '../StarRating/StarRating';
+import { clsx } from 'clsx';
+
 
 const ProductBox = ({
   name,
@@ -21,8 +23,10 @@ const ProductBox = ({
   oldPrice,
   isFavorite,
   id,
+  promoted,
 }) => {
   const dispatch = useDispatch();
+
   function onAddToCompare(product) {
     dispatch(addProductToCompare(product));
   }
@@ -36,7 +40,7 @@ const ProductBox = ({
     <div className={styles.root}>
       <div className={styles.photo}>
         {promo && <div className={styles.sale}>{promo}</div>}
-        <img src={imgSrc} alt={name} />
+        <img className={styles.prodImg} src={imgSrc} alt={name} />
         <div className={styles.buttons}>
           <Button variant='small'>Quick View</Button>
           <Button variant='small'>
@@ -60,7 +64,6 @@ const ProductBox = ({
           >
             <FontAwesomeIcon icon={faHeart}>Favorite</FontAwesomeIcon>
           </Button>
-
           <Button
             variant='outline'
             onClick={e => {
@@ -79,10 +82,13 @@ const ProductBox = ({
           >
             <FontAwesomeIcon icon={faExchangeAlt}>Add to compare</FontAwesomeIcon>
           </Button>
+          <Button variant='outline' className={clsx(!promoted && styles.promoted)}>
+            <FontAwesomeIcon icon={faEye}>Watch</FontAwesomeIcon>
+          </Button>
         </div>
         <div className={styles.price}>
           {// show discounted old price if it is given as a prop
-          oldPrice ? <span className={styles.oldPrice}>${oldPrice}</span> : ''}
+            oldPrice ? <span className={styles.oldPrice}>${oldPrice}</span> : ''}
           <Button noHover variant='small' className={styles.priceContainer}>
             $ {price}
           </Button>
@@ -103,6 +109,7 @@ ProductBox.propTypes = {
   imgSrc: PropTypes.string,
   oldPrice: PropTypes.number,
   isFavorite: PropTypes.bool,
+  promoted: PropTypes.bool,
 };
 
 export default ProductBox;
