@@ -24,13 +24,6 @@
   border-bottom: 2px solid #e2e2e2;
 }
 
-.buttons {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  bottom: 105px;
-}
-
 .brandIcon {
   font-size: 7px;
  }
@@ -57,25 +50,22 @@
   align-items: center;
 }
 
-.brandsContainer {
-  position: relative;
-
 .brandImages {
-  position: absolute;
   display: flex;
-  flex-direction: row;
-  top: 45px;
-  left: 43px;
+  justify-content: space-between;
+  width: calc(100% - 2px);
+  max-width: 100%;
+  bottom: 120px;
+  transform: translateY(-120px);
 
   img{
     border: 2px solid #e2e2e2;
     width: 90px;
     height: 60px;
-    margin-right: 13px;
     object-fit: cover;
   }
 }
-}
+
 
 
 

@@ -17,22 +17,17 @@ const Brands = () => {
   return (
     <div className={styles.root}>
       <div className='container'>
-        <div className={styles.brandsContainer}>
-          <div className={styles.brandsLine}></div>
-          <div className={styles.buttons}>
-            <Button variant='small' className={styles.leftButton}>
-              <FontAwesomeIcon icon={faLessThan} className={styles.brandIcon} />
-            </Button>
-            <Button variant='small' className={styles.rightButton}>
-              <FontAwesomeIcon icon={faGreaterThan} className={styles.brandIcon} />
-            </Button>
-          </div>
-          <div className={styles.brandImages}>
-            {' '}
-            {filteredBrandImages.map((img, index) => (
-              <img key={index} src={img} alt={`Brand ${index}`} />
-            ))}
-          </div>
+        <p className={styles.brandsLine}></p>
+        <div className={styles.brandImages}>
+          <Button variant='small' className={styles.leftButton}>
+            <FontAwesomeIcon icon={faLessThan} className={styles.brandIcon} />
+          </Button>{' '}
+          {filteredBrandImages.map((img, index) => (
+            <img key={index} src={img} alt={`Brand ${index}`} />
+          ))}
+          <Button variant='small' className={styles.rightButton}>
+            <FontAwesomeIcon icon={faGreaterThan} className={styles.brandIcon} />
+          </Button>
         </div>
       </div>
     </div>
