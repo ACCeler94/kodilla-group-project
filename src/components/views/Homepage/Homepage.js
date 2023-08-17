@@ -10,6 +10,8 @@ import DealsBanner from '../../layout/DealsBanner/DealsBanner';
 import Promoted from '../../features/Promoted/Promoted';
 import Gallery from '../../features/Gallery/Gallery';
 import Blog from '../../features/Blog/Blog';
+import Feedback from '../../features/Feedback/Feedback';
+
 
 const Homepage = () => (
   <div className={styles.root}>
@@ -20,6 +22,7 @@ const Homepage = () => (
     <Gallery />
     <Blog />
     <Brands />
+    <Feedback />
   </div>
 );
 
