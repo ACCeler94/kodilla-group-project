@@ -1,14 +1,13 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import styles from './ProductList.module.scss';
+import ShopBanner from '../../layout/ShopBanner/ShopBanner';
 
 const ProductList = () => {
   return (
     <div className={styles.root}>
       <div className='row'>
-        <div className={`col-12 ${styles.bannerContainer}`}>
-          <h2>Banner</h2>
-        </div>
+        <ShopBanner />
       </div>
       <div className='row'>
         <div className={`col-9 ${styles.productListWrapper}`}>
