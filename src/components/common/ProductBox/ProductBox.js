@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExchangeAlt, faShoppingBasket, faEye } from '@fortawesome/free-solid-svg-icons';
+import {
+  faExchangeAlt,
+  faShoppingBasket,
+  faEye,
+} from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Button from '../Button/Button';
 import { addProductToCompare } from '../../../redux/comparableProductsRedux';
 import { toggleFavorite } from '../../../redux/productsRedux';
 import StarRating from '../StarRating/StarRating';
 import { clsx } from 'clsx';
-
 
 const ProductBox = ({
   name,
@@ -25,6 +28,8 @@ const ProductBox = ({
   id,
   promoted,
 }) => {
+  const [popupIsOpen, setpopupIsOpen] = useState(false);
+
   const dispatch = useDispatch();
 
   function onAddToCompare(product) {
@@ -36,13 +41,40 @@ const ProductBox = ({
     dispatch(toggleFavorite({ id, isFavorite: !isFavorite }));
   };
 
+  const handlePopup = e => {
+    e.preventDefault();
+    setpopupIsOpen(!popupIsOpen);
+  };
+
+  const handlePopupClose = () => {
+    setpopupIsOpen(false);
+  };
+
   return (
     <div className={styles.root}>
+      <div className={`${styles.popupContainer} ${popupIsOpen ? styles.active : ''}`}>
+        <div className={styles.popupBox}>
+          <img src={imgSrc} alt={name} />
+          <div className={styles.popupDetailsContainer}>
+            <div className={styles.detailName}>{name}</div>
+            <div className={styles.detailId}>id: {id}</div>
+            <div className={styles.detilPrice}>${price}</div>
+            <div className={styles.detilOldPrice}>OLD PRICE: ${oldPrice}</div>
+            <div className={styles.detilPromo}>PROMOTION: {promo}</div>
+            <div className={styles.detilStars}>NUMBER OF STARS: {stars}</div>
+          </div>
+          <button className={styles.xButton} onClick={handlePopupClose}>
+            X
+          </button>
+        </div>
+      </div>
       <div className={styles.photo}>
         {promo && <div className={styles.sale}>{promo}</div>}
         <img className={styles.prodImg} src={imgSrc} alt={name} />
         <div className={styles.buttons}>
-          <Button variant='small'>Quick View</Button>
+          <Button variant='small' onClick={handlePopup}>
+            Quick View
+          </Button>
           <Button variant='small'>
             <FontAwesomeIcon icon={faShoppingBasket}></FontAwesomeIcon> ADD TO CART
           </Button>
@@ -88,7 +120,7 @@ const ProductBox = ({
         </div>
         <div className={styles.price}>
           {// show discounted old price if it is given as a prop
-            oldPrice ? <span className={styles.oldPrice}>${oldPrice}</span> : ''}
+          oldPrice ? <span className={styles.oldPrice}>${oldPrice}</span> : ''}
           <Button noHover variant='small' className={styles.priceContainer}>
             $ {price}
           </Button>
