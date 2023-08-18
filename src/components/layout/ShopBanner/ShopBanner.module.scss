@@ -1,0 +1,52 @@
+@import "../../../styles/settings.scss";
+
+.root {
+  .banner {
+    background-color: $darkGray-color;
+    color: $white-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+
+
+    .bannerTitle {
+      font-weight: $font-weight-thin;
+      letter-spacing: 1px;
+      font-size: $font-size-title;
+      margin-bottom: 0;
+      line-height: 1.1;
+
+      .titleHighlight {
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    .bannerSubTitle {
+      font-weight: $font-weight-thin;
+      font-size: $font-size-sub-title;
+      letter-spacing: 11px;
+      line-height: 1.1;
+
+      .subTitleHighlight {
+        color: $primary;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .bannerBreadcrumb {
+    background-color: $lightGray-color;
+    padding: 15px;
+    font-size: 0.9em;
+
+    .arrow {
+      margin: 0 5px;
+    }
+
+    .active {
+      color: $primary;
+      font-weight: 600;
+    }
+  }
+}
