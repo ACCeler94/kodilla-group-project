@@ -16,6 +16,15 @@
       repeat: no-repeat;
     }
 
+    .prodImg {
+      position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+
     overflow: hidden;
     align-items: flex-end;
 
@@ -102,6 +111,9 @@
       }
     }
   }
+  .promoted {
+    display: none;
+  }
 
   .fav {
     color: #ffff;
@@ -127,5 +139,84 @@
       background-color: $primary;
     }
   }
+}
 
+//POPUP//
+.popupContainer {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: $popup-background-color;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 20px;
+}
+
+.popupContainer.active {
+  display:inline-block;
+}
+
+.popupBox{
+  display: flex;
+  flex-direction: row;
+  width: 600px;
+  height: 400px;
+  position: relative;
+  justify-content: space-between;
+
+img {
+  max-width: 50%; /* Dostosuj szerokość obrazu */
+  margin-right: 10px;
+}
+
+.xButton {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: none;
+  border: none;
+  font-size: $popup-button-font-size;
+  cursor: pointer;
+  &:hover {
+    background-color: $gray-color;
+    border-radius: 10px;
+  }
+}
+
+.popupDetailsContainer{
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 310px;
+  height: 395px;
+  width: 302px;
+
+  .detailName{
+    font-size: $popup-detail-name-font-size;
+    font-weight: 600;
+  }
+  .detailId{
+    color:$gray-color;
+    font-size: $popup-detail-id-font-size;
+  }
+
+  .detilPrice{
+    font-size: $popup-detail-old-price-font-size;
+    font-weight: 600;
+  }
+  .detilOldPrice{
+    font-weight: 600;
+    color:$gray-color;
+  }
+
+  .detilPromo,
+  .detilStars{
+    font-weight: 600;
+  }
+}
 }
