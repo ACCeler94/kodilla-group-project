@@ -1,0 +1,139 @@
+@import "../../../styles/settings.scss";
+
+.chatbotButton{
+  z-index: 3;
+  position: fixed;
+  top: 90%;
+  left: 5%;
+  transform: translate(-50%, -50%);
+  background: $chatbot-border-color;
+  padding: 20px;
+  border-radius: 60px;
+  width: 100px;
+  height: 100px;
+  font-size: $chatbot-button-font-size;
+  text-align: center;
+  border: none;
+
+  &:hover{
+    @extend %hover-animation;
+    background-color: $chatbot-hover-color;
+    border: none;
+  }
+}
+.chatbotContainer {
+  display: none;
+  position: fixed;
+  top: 73%;
+  left: 88%;
+  transform: translate(-50%, -50%);
+  background: $popup-background-color;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  border-radius: 10px;
+  width: 200px;
+  height: 400px;
+}
+
+.chatbotContainer.active {
+  display: inline-block;
+  border: none;
+}
+
+.chatbotButtonDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chatbotBox {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0px;
+  right:0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+
+.toolsChatbotArea,
+.writeMessageArea {
+  flex: 1;
+  height: 10%;
+}
+
+.toolsChatbotArea {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: $chatbot-tools-area-color;
+  border-radius: 10px 10px 0 0;
+}
+
+.iconContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.icon {
+  cursor: pointer;
+  margin-right:5px;
+
+  &:hover{
+    color: $chatbot-icons-hover-color;
+  }
+}
+
+.textChatbotArea {
+  flex: 8;
+  background-color: $chatbot-text-area-color;
+  display: flex;
+
+ .welcomeText {
+  height: 23px;
+  width: 85%;
+  font-size: $chatbot-mian-font-size;
+  background-color: $chatbot-welcome-text-color;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-left: 2px;
+ }
+  }
+
+  .writeMessageArea {
+    background-color:$chatbot-message-area-color;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+
+    textarea {
+      width: 80%;
+      height: 100%;
+      border: none;
+      resize: none;
+      box-sizing: border-box;
+      outline: none;
+      font-size: $chatbot-mian-font-size;
+      background-color: $chatbot-textarea-backgroundcolor;
+      color: $chatbot-textarea-color;
+
+      &::placeholder {
+        font-size: $chatbot-mian-font-size;
+        color:$chatbot-textarea-placeholder-color;
+        border-radius: 0 0 10px 10px;
+      }
+    }
+
+    .iconPointer {
+      cursor: pointer;
+      position: absolute;
+      right: 20px;
+      top:5px;
+      &:hover {
+        color: $chatbot-textarea-placeholder-color;
+      }
+    }
+  }
+}
+
