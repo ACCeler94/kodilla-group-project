@@ -5,3 +5,9 @@
   height: 445px;
   position: relative;
 }
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .image {
+    width: 200%;
+  }
+}

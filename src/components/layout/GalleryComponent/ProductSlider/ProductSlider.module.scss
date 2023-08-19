@@ -42,3 +42,62 @@
       opacity: 1;
   }
 }
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .sliderColumn {
+    width: 200%;
+    z-index: 1;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 460px) {
+  .product {
+    margin-top: -20px;
+  }
+
+  .product:nth-child(4) {
+    display: none;
+  }
+  .product:nth-child(5) {
+    display: none;
+  }
+  .product:nth-child(6) {
+    display: none;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 399px) {
+  .product {
+    margin-top: -30px;
+  }
+
+  .product:nth-child(3) {
+    display: none;
+    height: 58px;
+  }
+  .product:nth-child(4) {
+    display: none;
+    height: 58px;
+  }
+  .product:nth-child(5) {
+    display: none;
+    height: 58px;
+  }
+  .product:nth-child(6) {
+    display: none;
+    height: 58px;
+  }
+}
+
+@media (min-width: 461px) and (max-width: 575px) {
+  .product {
+    margin-top: -20px;
+  }
+
+  .product:nth-child(5) {
+    display: none;
+  }
+  .product:nth-child(6) {
+    display: none;
+  }
+}

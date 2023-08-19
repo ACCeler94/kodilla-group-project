@@ -35,3 +35,9 @@
   border-top: 2px solid $primary !important;
   border-bottom: none !important;
 }
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .categories {
+    width: 200%;
+  }
+}
