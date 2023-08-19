@@ -1,0 +1,79 @@
+@import "../../../styles/settings.scss";
+
+.blogBox {
+  padding: 0 10px;
+  flex: 0 0 33.33%;
+
+  .root {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+  }
+  
+  .blogImages {
+    width: 100%;
+    height: 260px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    background: $blog-images;
+    left: 1.5%;
+
+    .blogInfo {
+      width: 300px;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      margin-left: 30px;
+      padding: 15px 0;
+      background-color: $blog-button-text;
+      font-size: 12px;
+
+      div:nth-child(2) {
+        padding-left: 10px;
+      }
+    }
+
+    .calendar {
+      color: $blog-logo;
+    }
+  }
+
+  .blogButton {
+    margin: 0 auto;
+    text-align: center;
+    background-color: $blog-button-text;
+
+    .content {
+      width: 250px;
+      text-align: left;
+      padding-top: 20px;
+    
+      h3 {
+        font-size: 15px;
+        font-weight: bolder;
+      }
+    
+      p {
+        font-size: 15px;
+      }
+    
+      .activeText {
+        color: $blog-active-color;
+      }
+    }
+
+    .button {
+      padding: 5px 30px;
+      border: 1px solid $blog-button-bg;
+      background-color: $blog-button-bg;
+      color: $blog-button-text;
+      font-size: 15px;
+    }
+    
+    .activeButton {
+      background-color: $blog-active-color;
+      border: none;
+    }
+  }
+}
