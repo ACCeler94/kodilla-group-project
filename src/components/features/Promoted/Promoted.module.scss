@@ -67,6 +67,7 @@
 }
 
 .dots {
+  text-align: right;
   ul {
     margin: 0;
     padding: 0;
@@ -94,6 +95,10 @@
       }
     }
   }
+}
+
+.dealsDiv {
+  text-align: left;
 }
 
 .timer {
@@ -131,4 +136,58 @@
 
 .timer:hover {
   opacity: 1;
+}
+
+
+@media (min-width: 540px) and (max-width: 768px) {
+  .timer {
+    top: 100px;
+    padding-top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 991px) {
+  .dealsDiv {
+    p {
+      font-size: 10px;
+    }
+  } 
+
+  .dots {
+    a {
+      max-width: 9px;
+        max-height: 9px;
+    }
+  }
+  .timer {
+    top: 20px;
+    padding-top: 80px;
+    left: -52px;
+  
+    .cartBut {
+      padding: 5px;
+    }
+  
+    .circleTim {
+      max-width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin: 0 3px;
+  
+      p {
+        transform: translateY(7px);
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .timer {
+    top: 80px;
+    padding-top: 50px;
+    left: -10px;
+  }
 }

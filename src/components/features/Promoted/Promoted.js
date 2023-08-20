@@ -21,13 +21,13 @@ const Promoted = () => {
   return (
     <div>
       <div className='container mt-4'>
-        <div className='row text-center'>
-          <div className='col-4 position-relative '>
+        <div className='row text-center '>
+          <div className='col-12 col-md-4 position-relative '>
             <div className={'row ' + styles.hotDiv}>
-              <div className='col text-left'>
+              <div className={'col ' + styles.dealsDiv}>
                 <p>HOT DEALS</p>
               </div>
-              <div className={'col text-right ' + styles.dots}>
+              <div className={'col-6 ' + styles.dots}>
                 <ul>
                   <li>
                     <a>page</a>
@@ -65,7 +65,7 @@ const Promoted = () => {
 
             <ProductBox {...promotedProd} />
           </div>
-          <div className='col-8 position-relative p-0'>
+          <div className='col-12 col-md-8  position-relative p-0'>
             <img
               className={styles.promPic}
               src={picForPresentation[7].imgSrc}
