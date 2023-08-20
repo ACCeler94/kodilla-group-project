@@ -29,3 +29,4 @@ FeedBackDisp.propTypes = {
   photo: PropTypes.string,
   shortDescription: PropTypes.string,
 };
+
