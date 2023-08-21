@@ -37,7 +37,7 @@ const Promoted = () => {
     <div>
       <div className='container mt-4'>
         <div className='row text-center '>
-          <div className='d-md-none d-lg-block col-md-4 position-relative '>
+          <div className='d-none d-lg-block col-md-4 position-relative '>
             <div className={'row ' + styles.hotDiv}>
               <div className={'col ' + styles.dealsDiv}>
                 <p>HOT DEALS</p>
