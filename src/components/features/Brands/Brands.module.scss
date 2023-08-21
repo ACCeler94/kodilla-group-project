@@ -1,78 +1,90 @@
 @import "../../../styles/settings.scss";
 
-.brandsLine {
-  width: 100%;
-  height: 150px;
-  position: relative;
-}
+.root {
+  .carousel {
+    padding: 15px 0;
+    margin-bottom: 30px;
+    border-bottom: 2px solid $brands-border;
+    border-top: 2px solid $brands-border;
 
-.brandsLine::before {
-  content: "";
-  position: absolute;
-  bottom: 130px;
-  left: 0;
-  width: 100%;
-  border-bottom: 2px solid $darken-white-color;
-}
+    img {
+      width: 75px;
+      height: 60px;
+      margin-left: -15px;
+      position: relative;
+      right: 115px;
+    }
 
-.brandsLine::after {
-  content: "";
-  position: absolute;
-  top: 130px;
-  left: 0;
-  width: 100%;
-  border-bottom: 2px solid $darken-white-color;
-}
+    button {
+      background-color: $brands-button-bg;
+      color: $brands-button-color;
+      font-weight: 400;
+      border-radius: 0;
+      height: 60px;
+      margin-left: -45px;
+    
+      &:not(.noHover):hover {
+        @extend %hover-animation;
+        color: $brands-button-color !important;
+        background-color: $brands-button-hover-bg;
+        text-decoration: none;
+      }
+    }
 
-.brandIcon {
-  font-size: $icons-font-size;
- }
-
-.leftButton {
-  height: 60px;
-  width: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.rightButton {
-  height: 60px;
-  width: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.brandImages {
-  display: flex;
-  justify-content: space-between;
-  width: calc(100% - 2px);
-  max-width: 100%;
-  bottom: 120px;
-  transform: translateY(-120px);
-  align-items: center;
-
-  img{
-    border: 2px solid $darken-white-color;
-    width: 90px;
-    height: 60px;
-    object-fit: cover;
+    button:last-child {
+      margin-right: -45px;
+    }
   }
 }
 
-@media (max-width: 535px) {
-  img:nth-child(2) {
-    display: none;
-  }
+@media (max-width: 1023px) {
+  .root {
+    .carousel {
+      img {
+        margin-left: -5px;
+        right: 100px;
+      }
 
-  img:nth-child(6) {
-    display: none;
+      button {
+        margin-left: -37px;
+      }
+  
+      button:last-child {
+        margin-right: -37px;
+      }
+    }
   }
 }
 
-@media (max-width: 680px) {
-  img:nth-child(6) {
-    display:none;
+@media (max-width: 850px) {
+  .root {
+    .carousel {
+      img {
+        margin-left: -5px;
+        right: 100px;
+      }
+
+      button {
+        margin-left: -30px;
+      }
+  
+      button:last-child {
+        margin-right: -30px;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .root {
+    .carousel {
+      button {
+        margin-left: -20px;
+      }
+  
+      button:last-child {
+        margin-right: -20px;
+      }
+    }
   }
 }

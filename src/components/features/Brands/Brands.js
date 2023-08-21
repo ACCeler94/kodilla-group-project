@@ -1,10 +1,9 @@
 import styles from './Brands.module.scss';
 import React, { useState } from 'react';
-import Button from '../../common/Button/Button';
 import Swipeable from '../../views/Swipeable/Swipeable';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLessThan, faGreaterThan } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 const Brands = () => {
   const products = useSelector(state => state.products);
@@ -30,23 +29,42 @@ const Brands = () => {
 
   const pagesCount = Math.ceil(filteredBrandImages.length / 8);
 
+  const rwd = {
+    desktop: {
+      breakpoint: { max: 2000, min: 1023 },
+      items: 6,
+      slidesToSlide: 6,
+    },
+    tablet: {
+      breakpoint: { max: 1023, min: 769 },
+      items: 5,
+      slidesToSlide: 5,
+    },
+    mobile: {
+      breakpoint: { max: 768, min: 0 },
+      items: 4,
+      slidesToSlide: 4,
+    },
+  };
+
   return (
     <div className={styles.root}>
       <div className='container'>
-        <p className={styles.brandsLine}></p>
-        <div className={styles.brandImages}>
-          <Button variant='small' className={styles.leftButton}>
-            <FontAwesomeIcon icon={faLessThan} className={styles.brandIcon} />
-          </Button>{' '}
-          {filteredBrandImages.map((img, index) => (
-            <>
-              <img key={index} src={img} alt={`Brand ${index}`} />
-              <Swipeable leftAction={leftAction} rightAction={rightAction} />
-            </>
-          ))}
-          <Button variant='small' className={styles.rightButton}>
-            <FontAwesomeIcon icon={faGreaterThan} className={styles.brandIcon} />
-          </Button>
+        <div className={styles.carousel}>
+          <Carousel
+            responsive={rwd}
+            infinite={true}
+            transition='all .5'
+            transitionDuration={300}
+            containerClass='carousel'
+          >
+            {filteredBrandImages.map((img, index) => (
+              <>
+                <img key={index} src={img} alt={`Brand ${index}`} />
+                <Swipeable leftAction={leftAction} rightAction={rightAction} />
+              </>
+            ))}
+          </Carousel>
         </div>
       </div>
     </div>
