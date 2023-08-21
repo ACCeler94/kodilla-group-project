@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Promoted.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import { useSelector } from 'react-redux';
@@ -19,7 +19,42 @@ const Promoted = () => {
 
   const promotedProducts = useSelector(getPromoted);
 
-  const [dealsActivePage, setDealsActivePage] = useState(2);
+  const [dealsActivePage, setDealsActivePage] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  // change active page every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!paused) {
+        setDealsActivePage(prevIndex => (prevIndex === 2 ? 0 : prevIndex + 1));
+      }
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [paused]);
+
+  // pause autoplay for 7 (+ 3 from usual delay) seconds
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setPaused(false);
+    }, 7000);
+    return () => clearTimeout(timeout);
+  }, [paused]);
+
+  const pagesCount = 3;
+  const dots = [];
+  for (let i = 0; i < pagesCount; i++) {
+    dots.push(
+      <li key={`dot-${i}`}>
+        <a
+          onClick={() => {
+            setDealsActivePage(i);
+            setPaused(true);
+          }}
+          className={i === dealsActivePage && styles.active}
+        ></a>
+      </li>
+    );
+  }
 
   return (
     <div className={styles.root}>
@@ -31,13 +66,7 @@ const Promoted = () => {
                 <p>HOT DEALS</p>
               </div>
               <div className={'col text-right ' + styles.dots}>
-                <ul>
-                  <li>
-                    <a onClick={() => setDealsActivePage(0)}>page</a>
-                    <a onClick={() => setDealsActivePage(1)}>page</a>
-                    <a onClick={() => setDealsActivePage(2)}>page</a>
-                  </li>
-                </ul>
+                <ul className={styles.dotsWrapper}>{dots}</ul>
               </div>
             </div>
             <div className={styles.timer}>
