@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Feedback.module.scss';
+import clsx from 'clsx';
 
-const FeedBackDisp = ({ opinion, photo, name, shortDescription }) => {
+const FeedBackDisp = ({ opinion, photo, name, shortDescription, activePage, id }) => {
   return (
-    <>
+    <div className={clsx(styles.showActive, id === activePage + 1 && styles.active)}>
       <div className='w-75 text-center m-auto'>
         <p>{opinion}</p>
       </div>
@@ -17,7 +18,7 @@ const FeedBackDisp = ({ opinion, photo, name, shortDescription }) => {
           <p className='text-muted'>{shortDescription}</p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -28,5 +29,6 @@ FeedBackDisp.propTypes = {
   name: PropTypes.string,
   photo: PropTypes.string,
   shortDescription: PropTypes.string,
+  activePage: PropTypes.number,
+  id: PropTypes.number,
 };
-

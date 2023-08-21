@@ -44,8 +44,9 @@
   
       li {
           line-height: 0;
-        a {
           display: inline-block;
+        a {
+          display: block;
           width: 13px;
           height: 13px;
           border-radius: 6px;
@@ -63,5 +64,13 @@
           }
         }
       }
+    }
+  }
+
+  .showActive {
+    display: none;
+
+    &.active {
+      display: block;
     }
   }

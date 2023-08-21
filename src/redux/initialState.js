@@ -321,13 +321,31 @@ const initialState = {
 
   feedback: [
     {
-      id: '1',
+      id: 1,
       name: 'John Smith',
       shortDescription: 'satisfied client',
       opinion:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat tellus urna, quis malesuada libero ultricies quis. Sed pretium feugiat turpis in suscipit. Quisque et massa porttitor, porttitor leo at, convallis erat. Lorem ipsum dolor sit.',
       photo:
         'https://images.pexels.com/photos/1139743/pexels-photo-1139743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    },
+    {
+      id: 2,
+      name: 'Adam Adams',
+      shortDescription: 'gratesful client',
+      opinion:
+        'Mauris viverra metus id lacus egestas, ut lacinia nunc iaculis. Vestibulum vel tincidunt arcu. Suspendisse dapibus lorem commodo libero mollis, vitae gravida libero molestie. Maecenas vitae tempor nunc. In ut diam et turpis gravida porta non a tortor. Morbi a iaculis ipsum.',
+      photo:
+        'https://images.pexels.com/photos/936019/pexels-photo-936019.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    },
+    {
+      id: 3,
+      name: 'Amanda Doe',
+      shortDescription: 'disapointed client',
+      opinion:
+        'Nulla id diam interdum, sodales nulla a, eleifend diam. Sed placerat lectus id ipsum convallis vulputate. Nullam fringilla sapien ut ipsum posuere, posuere pellentesque mauris dapibus. Donec massa nibh, tincidunt quis interdum quis, cursus sit amet dui. Ut tincidunt lorem lobortis vulputate.',
+      photo:
+        'https://images.pexels.com/photos/1197132/pexels-photo-1197132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     },
   ],
 };
