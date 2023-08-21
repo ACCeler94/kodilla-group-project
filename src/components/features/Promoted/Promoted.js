@@ -12,6 +12,7 @@ import {
   faShoppingBasket,
 } from '@fortawesome/free-solid-svg-icons';
 import FadeIn from 'react-fade-in/lib/FadeIn';
+import Swipeable from '../../views/Swipeable/Swipeable';
 
 const Promoted = () => {
   /* This selector is only to display picture for presentation into right column */
@@ -121,10 +122,10 @@ const Promoted = () => {
   return (
     <div className={styles.root}>
       <div className='container mt-4'>
-        <div className='row text-center'>
-          <div className='col-4 position-relative '>
+        <div className='row text-center '>
+          <div className='d-md-none d-lg-block col-md-4 position-relative '>
             <div className={'row ' + styles.hotDiv}>
-              <div className='col text-left'>
+              <div className={'col ' + styles.dealsDiv}>
                 <p>HOT DEALS</p>
               </div>
               <div className={'col text-right ' + styles.dots}>
@@ -173,10 +174,15 @@ const Promoted = () => {
             </div>
           </div>
           <div className='col-8 position-relative p-0'>
-            {presentationItems.slice(
-              presentationActivePage,
-              presentationActivePage + 1
-            )}
+            <Swipeable
+              leftAction={() => handlePresentationItemChange('left')}
+              rightAction={() => handlePresentationItemChange('right')}
+            >
+              {presentationItems.slice(
+                presentationActivePage,
+                presentationActivePage + 1
+              )}
+            </Swipeable>
             <div className='row'>
               <div className='col pr-0 '>
                 <Button
