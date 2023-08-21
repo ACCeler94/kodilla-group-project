@@ -76,31 +76,45 @@ const Promoted = () => {
   };
 
   const presentationItems = [
-    <div key={1} className={styles.presentationItem}>
-      <img
-        className={styles.promPic}
-        src={picForPresentation[7].imgSrc}
-        alt='armchair'
-      />
-      <div className={styles.innerBelt}>
-        <h1 className={styles.beltTitl}>
-          INDOOR <strong>FURNITURE</strong>
-        </h1>
-        <h5 className={styles.beltTitl}>SAVE UP TO 50% OF ALL FURNITURE</h5>
-      </div>
+    <div key={1} className={styles.presentationItemContainer}>
+      <FadeIn>
+        <div className={styles.presentationItem}>
+          <img
+            className={styles.promPic}
+            src={picForPresentation[7].imgSrc}
+            alt='armchair'
+          />
+          <div className={styles.innerBelt}>
+            <h1 className={styles.beltTitl}>
+              INDOOR <strong>FURNITURE</strong>
+            </h1>
+            <h5 className={styles.beltTitl}>SAVE UP TO 50% OF ALL FURNITURE</h5>
+          </div>
+          <Button variant='outline' className={styles.promButt}>
+            SHOP NOW
+          </Button>
+        </div>
+      </FadeIn>
     </div>,
-    <div key={2} className={styles.presentationItem}>
-      <img
-        className={styles.promPic}
-        src={picForPresentation[5].imgSrc}
-        alt='furniture'
-      />
-      <div className={styles.innerBelt}>
-        <h1 className={styles.beltTitl}>
-          BEST DESIGNER <strong>BRANDS</strong>
-        </h1>
-        <h5 className={styles.beltTitl}>SAVE UP TO 50% OF ALL FURNITURE</h5>
-      </div>
+    <div key={2} className={styles.presentationItemContainer}>
+      <FadeIn>
+        <div className={styles.presentationItem}>
+          <img
+            className={styles.promPic}
+            src={picForPresentation[5].imgSrc}
+            alt='furniture'
+          />
+          <div className={styles.innerBelt}>
+            <h1 className={styles.beltTitl}>
+              BEST DESIGNER <strong>BRANDS</strong>
+            </h1>
+            <h5 className={styles.beltTitl}>SAVE UP TO 50% OF ALL FURNITURE</h5>
+          </div>
+          <Button variant='outline' className={styles.promButt}>
+            SHOP NOW
+          </Button>
+        </div>
+      </FadeIn>
     </div>,
   ];
 
@@ -159,17 +173,10 @@ const Promoted = () => {
             </div>
           </div>
           <div className='col-8 position-relative p-0'>
-            <div className={styles.promotedCarousel}>
-              <FadeIn>
-                {presentationItems.slice(
-                  presentationActivePage,
-                  presentationActivePage + 1
-                )}
-              </FadeIn>
-            </div>
-            <Button variant='outline' className={styles.promButt}>
-              SHOP NOW
-            </Button>
+            {presentationItems.slice(
+              presentationActivePage,
+              presentationActivePage + 1
+            )}
             <div className='row'>
               <div className='col pr-0 '>
                 <Button
