@@ -15,7 +15,7 @@ const StarRating = ({ stars, userRating, id }) => {
 
   const handleRating = e => {
     e.preventDefault();
-    const index = e.currentTarget.dataset.index;
+    const index = parseInt(e.currentTarget.dataset.index);
     dispatch(rateProduct({ id, userRating: index }));
   };
 

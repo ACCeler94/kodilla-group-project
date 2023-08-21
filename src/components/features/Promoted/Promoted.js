@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Promoted.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import { useSelector } from 'react-redux';
@@ -11,15 +11,18 @@ import {
   faArrowRight,
   faShoppingBasket,
 } from '@fortawesome/free-solid-svg-icons';
+import FadeIn from 'react-fade-in/lib/FadeIn';
 
 const Promoted = () => {
   /* This selector is only to display picture for presentation into right column */
   const picForPresentation = useSelector(getAll);
 
-  const [promotedProd] = useSelector(getPromoted);
+  const promotedProducts = useSelector(getPromoted);
+
+  const [dealsActivePage, setDealsActivePage] = useState(2);
 
   return (
-    <div>
+    <div className={styles.root}>
       <div className='container mt-4'>
         <div className='row text-center'>
           <div className='col-4 position-relative '>
@@ -30,9 +33,9 @@ const Promoted = () => {
               <div className={'col text-right ' + styles.dots}>
                 <ul>
                   <li>
-                    <a>page</a>
-                    <a>page</a>
-                    <a>page</a>
+                    <a onClick={() => setDealsActivePage(0)}>page</a>
+                    <a onClick={() => setDealsActivePage(1)}>page</a>
+                    <a onClick={() => setDealsActivePage(2)}>page</a>
                   </li>
                 </ul>
               </div>
@@ -62,8 +65,21 @@ const Promoted = () => {
                 </div>
               </div>
             </div>
-
-            <ProductBox {...promotedProd} />
+            <div className={styles.hotDealsCarouselWrapper}>
+              <ul className={styles.hotDealsCarouselContainer}>
+                {promotedProducts
+                  .slice(dealsActivePage, dealsActivePage + 1)
+                  .map(product => {
+                    return (
+                      <li key={product.id}>
+                        <FadeIn>
+                          <ProductBox {...product} />
+                        </FadeIn>
+                      </li>
+                    );
+                  })}
+              </ul>
+            </div>
           </div>
           <div className='col-8 position-relative p-0'>
             <img
