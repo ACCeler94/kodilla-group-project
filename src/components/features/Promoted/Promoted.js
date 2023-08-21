@@ -61,7 +61,7 @@ const Promoted = () => {
 
   const handlePresentationItemChange = direction => {
     if (direction === 'right') {
-      if (presentationActivePage > presentationItems.length - 1) {
+      if (presentationActivePage < presentationItems.length - 1) {
         setPresentationActivePage(presentationActivePage + 1);
       } else {
         setPresentationActivePage(0);
