@@ -21,6 +21,7 @@ const Promoted = () => {
 
   const [dealsActivePage, setDealsActivePage] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [presentationActivePage, setPresentationActivePage] = useState(0);
 
   // change active page every 3 seconds
   useEffect(() => {
@@ -51,10 +52,57 @@ const Promoted = () => {
             setPaused(true);
           }}
           className={i === dealsActivePage && styles.active}
-        ></a>
+        >
+          page {i}
+        </a>
       </li>
     );
   }
+
+  const handlePresentationItemChange = direction => {
+    if (direction === 'right') {
+      if (presentationActivePage > presentationItems.length - 1) {
+        setPresentationActivePage(presentationActivePage + 1);
+      } else {
+        setPresentationActivePage(0);
+      }
+    } else if (direction === 'left') {
+      if (presentationActivePage > 0) {
+        setPresentationActivePage(presentationActivePage - 1);
+      } else {
+        setPresentationActivePage(presentationItems.length - 1);
+      }
+    }
+  };
+
+  const presentationItems = [
+    <div key={1} className={styles.presentationItem}>
+      <img
+        className={styles.promPic}
+        src={picForPresentation[7].imgSrc}
+        alt='armchair'
+      />
+      <div className={styles.innerBelt}>
+        <h1 className={styles.beltTitl}>
+          INDOOR <strong>FURNITURE</strong>
+        </h1>
+        <h5 className={styles.beltTitl}>SAVE UP TO 50% OF ALL FURNITURE</h5>
+      </div>
+    </div>,
+    <div key={2} className={styles.presentationItem}>
+      <img
+        className={styles.promPic}
+        src={picForPresentation[5].imgSrc}
+        alt='furniture'
+      />
+      <div className={styles.innerBelt}>
+        <h1 className={styles.beltTitl}>
+          BEST DESIGNER <strong>BRANDS</strong>
+        </h1>
+        <h5 className={styles.beltTitl}>SAVE UP TO 50% OF ALL FURNITURE</h5>
+      </div>
+    </div>,
+  ];
 
   return (
     <div className={styles.root}>
@@ -111,23 +159,25 @@ const Promoted = () => {
             </div>
           </div>
           <div className='col-8 position-relative p-0'>
-            <img
-              className={styles.promPic}
-              src={picForPresentation[7].imgSrc}
-              alt='armchair'
-            />
-            <div className={styles.innerBelt}>
-              <h1 className={styles.beltTitl}>
-                INDOOR <strong>FURNITURE</strong>
-              </h1>
-              <h5 className={styles.beltTitl}>SAVE UP TO 50% OF ALL FURNITURE</h5>
+            <div className={styles.promotedCarousel}>
+              <FadeIn>
+                {presentationItems.slice(
+                  presentationActivePage,
+                  presentationActivePage + 1
+                )}
+              </FadeIn>
             </div>
             <Button variant='outline' className={styles.promButt}>
               SHOP NOW
             </Button>
             <div className='row'>
               <div className='col pr-0 '>
-                <Button noHover variant='outline' className={styles.arrLe}>
+                <Button
+                  noHover
+                  variant='outline'
+                  className={styles.arrLe}
+                  onClick={() => handlePresentationItemChange('left')}
+                >
                   <FontAwesomeIcon
                     icon={faArrowLeft}
                     className={styles.butIcon}
@@ -135,7 +185,12 @@ const Promoted = () => {
                 </Button>
               </div>
               <div className='col pl-0'>
-                <Button noHover variant='outline' className={styles.arrLe}>
+                <Button
+                  noHover
+                  variant='outline'
+                  className={styles.arrLe}
+                  onClick={() => handlePresentationItemChange('right')}
+                >
                   <FontAwesomeIcon
                     icon={faArrowRight}
                     className={styles.butIcon}
