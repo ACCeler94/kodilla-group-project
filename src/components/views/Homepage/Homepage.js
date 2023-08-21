@@ -12,6 +12,7 @@ import Gallery from '../../features/Gallery/Gallery';
 import Chatbot from '../../layout/Chatbot/Chatbot';
 import Blog from '../../features/Blog/Blog';
 import Feedback from '../../features/Feedback/Feedback';
+import StickyBar from '../../features/StickyBar/StickyBar';
 
 const Homepage = () => (
   <div className={styles.root}>
@@ -19,6 +20,7 @@ const Homepage = () => (
     <FeatureBoxes />
     <DealsBanner />
     <NewFurniture />
+    <StickyBar />
     <Gallery />
     <Blog />
     <Brands />
