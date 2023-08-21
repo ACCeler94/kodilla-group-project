@@ -38,3 +38,9 @@
   background-color: $gallery-productinfo-corner;
   transform: rotate(45deg);
 }
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .productinfo {
+    left: 100%;
+  }
+}
