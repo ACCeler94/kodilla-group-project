@@ -123,7 +123,7 @@ const Promoted = () => {
     <div className={styles.root}>
       <div className='container mt-4'>
         <div className='row text-center '>
-          <div className='d-md-none d-lg-block col-md-4 position-relative '>
+          <div className='d-none d-lg-block col-md-4 position-relative '>
             <div className={'row ' + styles.hotDiv}>
               <div className={'col ' + styles.dealsDiv}>
                 <p>HOT DEALS</p>
@@ -133,7 +133,7 @@ const Promoted = () => {
               </div>
             </div>
             <div className={styles.timer}>
-              <div>
+              <div className={styles.boxWrapper}>
                 <Button variant='outline' className={styles.cartBut}>
                   <FontAwesomeIcon
                     icon={faShoppingBasket}
@@ -163,7 +163,7 @@ const Promoted = () => {
                   .slice(dealsActivePage, dealsActivePage + 1)
                   .map(product => {
                     return (
-                      <li key={product.id}>
+                      <li key={product.id} className={styles.productContainer}>
                         <FadeIn>
                           <ProductBox {...product} />
                         </FadeIn>
@@ -173,7 +173,7 @@ const Promoted = () => {
               </ul>
             </div>
           </div>
-          <div className='col-8 position-relative p-0'>
+          <div className='col-12 col-lg-8 position-relative p-0'>
             <Swipeable
               leftAction={() => handlePresentationItemChange('left')}
               rightAction={() => handlePresentationItemChange('right')}

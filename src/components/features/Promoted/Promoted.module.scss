@@ -2,9 +2,12 @@
 
 .root {
 
+  .productContainer {
+    height: 100%;
+  }
+
   .presentationItem {
     position: relative;
-
   }
 
   .innerBelt {
@@ -123,6 +126,12 @@
     z-index: 1;
     transition: 1s;
     opacity: 0;
+
+    .boxWrapper {
+      height: 100%;
+    }
+
+
 
     .cartBut {
       background-color: #000000;
