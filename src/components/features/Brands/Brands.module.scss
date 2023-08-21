@@ -51,6 +51,7 @@
   max-width: 100%;
   bottom: 120px;
   transform: translateY(-120px);
+  align-items: center;
 
   img{
     border: 2px solid $darken-white-color;
@@ -60,6 +61,18 @@
   }
 }
 
+@media (max-width: 535px) {
+  img:nth-child(2) {
+    display: none;
+  }
 
+  img:nth-child(6) {
+    display: none;
+  }
+}
 
-
+@media (max-width: 680px) {
+  img:nth-child(6) {
+    display:none;
+  }
+}

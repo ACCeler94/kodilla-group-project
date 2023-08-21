@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -70,7 +71,9 @@ const ProductBox = ({
       </div>
       <div className={styles.photo}>
         {promo && <div className={styles.sale}>{promo}</div>}
-        <img className={styles.prodImg} src={imgSrc} alt={name} />
+        <Link to={`product/${id}`} style={{ textDecoration: 'none' }}>
+          <img className={styles.prodImg} src={imgSrc} alt={name} />
+        </Link>
         <div className={styles.buttons}>
           <Button variant='small' onClick={handlePopup}>
             Quick View
@@ -81,7 +84,9 @@ const ProductBox = ({
         </div>
       </div>
       <div className={styles.content}>
-        <h5>{name}</h5>
+        <Link to={`product/${id}`} style={{ textDecoration: 'none' }}>
+          <h5>{name}</h5>
+        </Link>
         <div className={styles.starsWrapper}>
           <StarRating stars={stars} userRating={userRating} id={id} />
         </div>

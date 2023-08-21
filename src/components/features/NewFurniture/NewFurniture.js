@@ -94,7 +94,9 @@ const NewFurniture = props => {
               .slice(activePage * productsPerPage, (activePage + 1) * productsPerPage)
               .map(item => (
                 <div key={item.id} className='col-12 col-sm-6 col-md-4 col-xl-3'>
-                  <ProductBox {...item} />
+                  <FadeIn>
+                    <ProductBox {...item} />
+                  </FadeIn>
                 </div>
               ))}
           </div>

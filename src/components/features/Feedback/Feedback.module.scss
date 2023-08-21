@@ -1,0 +1,67 @@
+@import "../../../styles/settings.scss";
+
+.feedBck {
+    border-bottom: 5px solid $darken-white-color;
+    position: relative;
+    h3 {
+        color: $primary;
+    }
+}
+
+.feedBck::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  height: 5px;
+  width: 50px;
+  background-color: $primary;
+  z-index: 1;
+}
+
+.feedBckIcon {
+    font-size: 20px;
+}
+
+.fbImg {
+  width: 100px;
+  height: 100px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+}
+
+.dots {
+    margin: 26px 0 0 0;
+    padding: 0;
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+  
+      li {
+          line-height: 0;
+        a {
+          display: inline-block;
+          width: 13px;
+          height: 13px;
+          border-radius: 6px;
+          background-color: $link-color;
+          font-size: 0;
+          margin: auto 5px;
+          line-height: 0;
+  
+          &.active{
+            background-color: $primary;
+          }
+          &:hover {
+            @extend %hover-animation;
+            background-color: $primary;
+          }
+        }
+      }
+    }
+  }

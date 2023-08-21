@@ -318,6 +318,18 @@ const initialState = {
   },
   mode: 'laptop',
   comparableProducts: [],
+
+  feedback: [
+    {
+      id: '1',
+      name: 'John Smith',
+      shortDescription: 'satisfied client',
+      opinion:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc feugiat tellus urna, quis malesuada libero ultricies quis. Sed pretium feugiat turpis in suscipit. Quisque et massa porttitor, porttitor leo at, convallis erat. Lorem ipsum dolor sit.',
+      photo:
+        'https://images.pexels.com/photos/1139743/pexels-photo-1139743.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    },
+  ],
 };
 
 export default initialState;
