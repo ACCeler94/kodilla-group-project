@@ -17,6 +17,7 @@ const Chatbot = () => {
 
   const handleChatbotClose = () => {
     setchatbotIsOpen(false);
+    setButtonAnimationActive(false);
   };
 
   return (
