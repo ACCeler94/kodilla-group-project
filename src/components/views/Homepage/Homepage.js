@@ -22,6 +22,7 @@ const Homepage = () => (
     <NewFurniture />
     <StickyBar />
     <Gallery />
+    <StickyBar />
     <Blog />
     <Brands />
     <Chatbot />

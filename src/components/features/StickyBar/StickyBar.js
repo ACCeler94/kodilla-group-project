@@ -9,6 +9,7 @@ import styles from './StickyBar.module.scss';
 
 const StickyBar = () => {
   const selectedItems = useSelector(getAllComparableProducts);
+
   const isSomethingSelected = selectedItems.length > 0;
   const dispatch = useDispatch();
 
