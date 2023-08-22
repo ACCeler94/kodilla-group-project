@@ -1,143 +1,170 @@
 @import "../../../styles/settings.scss";
 
+.root {
 
-.innerBelt {
-  background-color: rgba(0, 0, 0, 0.5);
-  height: 40%;
-  top: 45%;
-  transform: translateY(-50%);
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-}
+  .productContainer {
+    height: 100%;
+  }
 
-.beltTitl {
-  color: #fff;
-  font-weight: 400;
-  letter-spacing: 1.5px;
-}
+  .presentationItem {
+    position: relative;
+  }
 
-.promButt {
-  left: 50%;
-  top: 320px;
-  transform: translateX(-50%);
-  position: absolute;
-  border-radius: 5%;
-  background-color: #fff;
-  height: 45px;
-  width: 100px;
-  line-height: 2.5;
-  font-weight: 700;
-}
+  .innerBelt {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 40%;
+    top: 55%;
+    transform: translateY(-50%);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
 
-.promPic {
-  width: 100%;
+  .beltTitl {
+    color: #fff;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+  }
+
+  .promButt {
+    left: 50%;
+    top: 320px;
+    transform: translateX(-50%);
+    position: absolute;
+    border-radius: 5%;
+    background-color: #fff;
+    height: 45px;
+    width: 100px;
+    line-height: 2.5;
+    font-weight: 700;
+  }
+
+  .promPic {
+    width: 100%;
     height: 465px;
     object-fit: cover;
     margin: 0;
-}
-
-.arrLe {
-  width: 100%;
-  background-color: #000000;
-  margin: 0;
-}
-
-.arrLe:hover {
-  background-color: $primary;
-}
-
-.butIcon {
-  color: #fff;
-}
-
-.hotDiv {
-  background-color: #000000;
-  padding: 3px 15px;
-  margin: 0;
-
-  p {
-    color: #fff;
-    margin: 0;
-    font-weight: 600;
   }
-}
 
-.dots {
-  text-align: right;
-  ul {
+  .arrLe {
+    width: 100%;
+    background-color: #000000;
     margin: 0;
-    padding: 0;
-    list-style: none;
+  }
 
-    li {
-        line-height: 0;
-      a {
-        display: inline-block;
-        width: 13px;
-        height: 13px;
-        border-radius: 6px;
-        background-color: $link-color;
-        font-size: 0;
-        margin: auto 5px;
-        line-height: 0;
+  .arrLe:hover {
+    background-color: $primary;
+  }
 
-        &.active{
-          background-color: $primary;
-        }
-        &:hover {
-          @extend %hover-animation;
-          background-color: $primary;
+  .butIcon {
+    color: #fff;
+  }
+
+  .hotDiv {
+    background-color: #000000;
+    padding: 3px 15px;
+    margin: 0;
+
+    p {
+      color: #fff;
+      margin: 0;
+      font-weight: 600;
+    }
+  }
+
+  .dots {
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      height: 100%;
+
+      li {
+        line-height: 0;
+        display: flex;
+
+        a {
+          display: inline-block;
+          width: 13px;
+          height: 13px;
+          border-radius: 6px;
+          background-color: $link-color;
+          font-size: 0;
+          margin: auto 5px;
+          line-height: 0;
+
+          &.active {
+            background-color: $primary;
+          }
+
+          &:hover {
+            @extend %hover-animation;
+            background-color: $primary;
+          }
         }
       }
     }
   }
-}
 
-.dealsDiv {
-  text-align: left;
-}
-
-.timer {
-  position: absolute;
-  top: 20px;
-  padding-top: 100px;
-  text-align: center;
-  min-width: 348px;
-  min-height: 315px;
-  z-index: 1;
-  transition: 1s;
-  opacity: 0;
-
-  .cartBut {
-    background-color: #000000;
-    font-weight: 700;
-    color: #fff;
-    padding: 10px;
+  .dealsDiv {
+    text-align: left;
   }
 
-  .circleTim {
-    background-color: #000000;
-    max-width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    margin: 0 3px;
+  .timer {
+    position: absolute;
+    top: 20px;
+    padding-top: 100px;
+    text-align: center;
+    min-width: 348px;
+    min-height: 315px;
+    z-index: 1;
+    transition: 1s;
+    opacity: 0;
 
-    p {
+    .boxWrapper {
+      height: 100%;
+    }
+
+
+
+    .cartBut {
+      background-color: #000000;
+      font-weight: 700;
       color: #fff;
-      font-weight: 600;
-      transform: translateY(7px);
+      padding: 10px;
+    }
+
+    .circleTim {
+      background-color: #000000;
+      max-width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin: 0 3px;
+
+      p {
+        color: #fff;
+        font-weight: 600;
+        transform: translateY(7px);
+      }
     }
   }
-}
 
-.timer:hover {
-  opacity: 1;
-}
+  .timer:hover {
+    opacity: 1;
+  }
 
+  .hotDealsCarouselContainer {
+    list-style: none;
+    padding: 0;
+
+  }
+}
 
 @media (min-width: 540px) and (max-width: 768px) {
   .timer {
@@ -153,29 +180,30 @@
     p {
       font-size: 10px;
     }
-  } 
+  }
 
   .dots {
     a {
       max-width: 9px;
-        max-height: 9px;
+      max-height: 9px;
     }
   }
+
   .timer {
     top: 20px;
     padding-top: 80px;
     left: -52px;
-  
+
     .cartBut {
       padding: 5px;
     }
-  
+
     .circleTim {
       max-width: 50px;
       height: 50px;
       border-radius: 50%;
       margin: 0 3px;
-  
+
       p {
         transform: translateY(7px);
         font-size: 10px;
@@ -190,4 +218,5 @@
     padding-top: 50px;
     left: -10px;
   }
+
 }

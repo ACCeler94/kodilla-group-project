@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Promoted.module.scss';
 import ProductBox from '../../common/ProductBox/ProductBox';
 import { useSelector } from 'react-redux';
@@ -11,49 +11,129 @@ import {
   faArrowRight,
   faShoppingBasket,
 } from '@fortawesome/free-solid-svg-icons';
+import FadeIn from 'react-fade-in/lib/FadeIn';
 import Swipeable from '../../views/Swipeable/Swipeable';
 
 const Promoted = () => {
   /* This selector is only to display picture for presentation into right column */
   const picForPresentation = useSelector(getAll);
 
-  const [promotedProd] = useSelector(getPromoted);
+  const promotedProducts = useSelector(getPromoted);
 
-  const [newPic, setNewPic] = useState(0);
+  const [dealsActivePage, setDealsActivePage] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [presentationActivePage, setPresentationActivePage] = useState(0);
 
-  const rightAction = () => {
-    if (newPic !== 0) {
-      setNewPic(newPic - 1);
+  // change active page every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!paused) {
+        setDealsActivePage(prevIndex => (prevIndex === 2 ? 0 : prevIndex + 1));
+      }
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [paused]);
+
+  // pause autoplay for 7 (+ 3 from usual delay) seconds
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setPaused(false);
+    }, 7000);
+    return () => clearTimeout(timeout);
+  }, [paused]);
+
+  const pagesCount = 3;
+  const dots = [];
+  for (let i = 0; i < pagesCount; i++) {
+    dots.push(
+      <li key={`dot-${i}`}>
+        <a
+          onClick={() => {
+            setDealsActivePage(i);
+            setPaused(true);
+          }}
+          className={i === dealsActivePage && styles.active}
+        >
+          page {i}
+        </a>
+      </li>
+    );
+  }
+
+  const handlePresentationItemChange = direction => {
+    if (direction === 'right') {
+      if (presentationActivePage < presentationItems.length - 1) {
+        setPresentationActivePage(presentationActivePage + 1);
+      } else {
+        setPresentationActivePage(0);
+      }
+    } else if (direction === 'left') {
+      if (presentationActivePage > 0) {
+        setPresentationActivePage(presentationActivePage - 1);
+      } else {
+        setPresentationActivePage(presentationItems.length - 1);
+      }
     }
   };
 
-  const leftAction = () => {
-    if (newPic !== 7) {
-      setNewPic(newPic + 1);
-    }
-  };
+  const presentationItems = [
+    <div key={1} className={styles.presentationItemContainer}>
+      <FadeIn>
+        <div className={styles.presentationItem}>
+          <img
+            className={styles.promPic}
+            src={picForPresentation[7].imgSrc}
+            alt='armchair'
+          />
+          <div className={styles.innerBelt}>
+            <h1 className={styles.beltTitl}>
+              INDOOR <strong>FURNITURE</strong>
+            </h1>
+            <h5 className={styles.beltTitl}>SAVE UP TO 50% OF ALL FURNITURE</h5>
+          </div>
+          <Button variant='outline' className={styles.promButt}>
+            SHOP NOW
+          </Button>
+        </div>
+      </FadeIn>
+    </div>,
+    <div key={2} className={styles.presentationItemContainer}>
+      <FadeIn>
+        <div className={styles.presentationItem}>
+          <img
+            className={styles.promPic}
+            src={picForPresentation[5].imgSrc}
+            alt='furniture'
+          />
+          <div className={styles.innerBelt}>
+            <h1 className={styles.beltTitl}>
+              BEST DESIGNER <strong>BRANDS</strong>
+            </h1>
+            <h5 className={styles.beltTitl}>SAVE UP TO 50% OF ALL FURNITURE</h5>
+          </div>
+          <Button variant='outline' className={styles.promButt}>
+            SHOP NOW
+          </Button>
+        </div>
+      </FadeIn>
+    </div>,
+  ];
 
   return (
-    <div>
+    <div className={styles.root}>
       <div className='container mt-4'>
         <div className='row text-center '>
-          <div className='d-md-none d-lg-block col-md-4 position-relative '>
+          <div className='d-none d-lg-block col-md-4 position-relative '>
             <div className={'row ' + styles.hotDiv}>
               <div className={'col ' + styles.dealsDiv}>
                 <p>HOT DEALS</p>
               </div>
-              <div className={'col-6 ' + styles.dots}>
-                <ul>
-                  <li>
-                    <a>page</a>
-                    <a>page</a>
-                    <a>page</a>
-                  </li>
-                </ul>
+              <div className={'col text-right ' + styles.dots}>
+                <ul className={styles.dotsWrapper}>{dots}</ul>
               </div>
             </div>
             <div className={styles.timer}>
-              <div>
+              <div className={styles.boxWrapper}>
                 <Button variant='outline' className={styles.cartBut}>
                   <FontAwesomeIcon
                     icon={faShoppingBasket}
@@ -77,54 +157,60 @@ const Promoted = () => {
                 </div>
               </div>
             </div>
-
-            <ProductBox {...promotedProd} />
+            <div className={styles.hotDealsCarouselWrapper}>
+              <ul className={styles.hotDealsCarouselContainer}>
+                {promotedProducts
+                  .slice(dealsActivePage, dealsActivePage + 1)
+                  .map(product => {
+                    return (
+                      <li key={product.id} className={styles.productContainer}>
+                        <FadeIn>
+                          <ProductBox {...product} />
+                        </FadeIn>
+                      </li>
+                    );
+                  })}
+              </ul>
+            </div>
           </div>
-          <div className='col-12 col-lg-8  position-relative p-0'>
-            <Swipeable leftAction={leftAction} rightAction={rightAction}>
-              <img
-                className={styles.promPic}
-                src={picForPresentation[newPic].imgSrc}
-                alt='armchair'
-              />
-              <div className={styles.innerBelt}>
-                <h1 className={styles.beltTitl}>
-                  INDOOR <strong>FURNITURE</strong>
-                </h1>
-                <h5 className={styles.beltTitl}>SAVE UP TO 50% OF ALL FURNITURE</h5>
-              </div>
-              <Button variant='outline' className={styles.promButt}>
-                SHOP NOW
-              </Button>
-              <div className='row'>
-                <div className='col pr-0 '>
-                  <Button
-                    noHover
-                    variant='outline'
-                    className={styles.arrLe}
-                    onClick={() => rightAction()}
-                  >
-                    <FontAwesomeIcon
-                      icon={faArrowLeft}
-                      className={styles.butIcon}
-                    ></FontAwesomeIcon>
-                  </Button>
-                </div>
-                <div className='col pl-0'>
-                  <Button
-                    noHover
-                    variant='outline'
-                    className={styles.arrLe}
-                    onClick={() => leftAction()}
-                  >
-                    <FontAwesomeIcon
-                      icon={faArrowRight}
-                      className={styles.butIcon}
-                    ></FontAwesomeIcon>
-                  </Button>
-                </div>
-              </div>
+          <div className='col-12 col-lg-8 position-relative p-0'>
+            <Swipeable
+              leftAction={() => handlePresentationItemChange('left')}
+              rightAction={() => handlePresentationItemChange('right')}
+            >
+              {presentationItems.slice(
+                presentationActivePage,
+                presentationActivePage + 1
+              )}
             </Swipeable>
+            <div className='row'>
+              <div className='col pr-0 '>
+                <Button
+                  noHover
+                  variant='outline'
+                  className={styles.arrLe}
+                  onClick={() => handlePresentationItemChange('left')}
+                >
+                  <FontAwesomeIcon
+                    icon={faArrowLeft}
+                    className={styles.butIcon}
+                  ></FontAwesomeIcon>
+                </Button>
+              </div>
+              <div className='col pl-0'>
+                <Button
+                  noHover
+                  variant='outline'
+                  className={styles.arrLe}
+                  onClick={() => handlePresentationItemChange('right')}
+                >
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    className={styles.butIcon}
+                  ></FontAwesomeIcon>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
