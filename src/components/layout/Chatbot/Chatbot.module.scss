@@ -1,9 +1,9 @@
 @import "../../../styles/settings.scss";
 
-.chatbotButton{
+.chatbotButton {
   z-index: 3;
   position: fixed;
-  top: 90%;
+  top: 75%;
   left: 5%;
   transform: translate(-50%, -50%);
   background: $chatbot-border-color;
@@ -14,6 +14,7 @@
   font-size: $chatbot-button-font-size;
   text-align: center;
   border: none;
+  cursor: pointer;
 
   &:hover{
     @extend %hover-animation;
@@ -21,6 +22,20 @@
     border: none;
   }
 }
+
+.chatbotButton.animationActive {
+  animation: slideInLeft 0.5s ease-in-out forwards;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-40px) translateY(-50px);
+  }
+  to {
+    transform: translateX(-200px) translateY(-50px);
+  }
+}
+
 .chatbotContainer {
   display: none;
   position: fixed;
@@ -34,6 +49,7 @@
   border-radius: 10px;
   width: 200px;
   height: 400px;
+  padding-left: 55px;
 }
 
 .chatbotContainer.active {
@@ -57,8 +73,7 @@
   display: flex;
   flex-direction: column;
 
-.toolsChatbotArea,
-.writeMessageArea {
+.toolsChatbotArea{
   flex: 1;
   height: 10%;
 }
@@ -89,15 +104,26 @@
   flex: 8;
   background-color: $chatbot-text-area-color;
   display: flex;
+  padding-left: 15px;
 
  .welcomeText {
-  height: 23px;
-  width: 85%;
+  height: 30px;
+  width: 90%;
   font-size: $chatbot-mian-font-size;
   background-color: $chatbot-welcome-text-color;
   border-radius: 10px;
   margin-top: 5px;
   margin-left: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left:7px;
+
+  .welcomeTextParagraph{
+  position: relative;
+  top:7px;
+  }
  }
   }
 
@@ -106,8 +132,11 @@
     display: flex;
     flex-direction: row;
     position: relative;
+    height: 15%;
+
 
     textarea {
+      padding-left: 5px;
       width: 80%;
       height: 100%;
       border: none;

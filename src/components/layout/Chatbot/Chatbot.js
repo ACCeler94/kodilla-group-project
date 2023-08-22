@@ -7,14 +7,26 @@ import { faTimes, faRedo } from '@fortawesome/free-solid-svg-icons';
 const Chatbot = () => {
   const [chatbotIsOpen, setchatbotIsOpen] = useState(false);
 
+  const [buttonAnimationActive, setButtonAnimationActive] = useState(false);
+
   const handleChatbot = e => {
     e.preventDefault();
+    setButtonAnimationActive(true);
     setchatbotIsOpen(!chatbotIsOpen);
+  };
+
+  const handleChatbotClose = () => {
+    setchatbotIsOpen(false);
   };
 
   return (
     <div className={styles.root}>
-      <div onClick={handleChatbot} className={styles.chatbotButton}>
+      <div
+        onClick={handleChatbot}
+        className={`${styles.chatbotButton} ${
+          buttonAnimationActive ? styles.animationActive : ''
+        }`}
+      >
         <div className={styles.chatbotButtonDiv}>
           <p>Do you need help? Write to us!</p>
         </div>
@@ -26,11 +38,17 @@ const Chatbot = () => {
           <div className={styles.toolsChatbotArea}>
             <div className={styles.iconContainer}>
               <FontAwesomeIcon icon={faRedo} className={styles.icon} />
-              <FontAwesomeIcon icon={faTimes} className={styles.icon} />
+              <FontAwesomeIcon
+                icon={faTimes}
+                className={styles.icon}
+                onClick={handleChatbotClose}
+              />
             </div>
           </div>
           <div className={styles.textChatbotArea}>
-            <div className={styles.welcomeText}>Hello, how can I help you?</div>
+            <div className={styles.welcomeText}>
+              <p className={styles.welcomeTextParagraph}>Hello, how can I help you?</p>
+            </div>
           </div>
           <div className={styles.writeMessageArea}>
             <textarea placeholder='Ask your question here...'></textarea>
