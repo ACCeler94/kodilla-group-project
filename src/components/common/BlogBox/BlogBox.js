@@ -9,6 +9,10 @@ const BlogBox = ({ isActive }) => {
     <article className={styles.blogBox}>
       <div className={styles.root}>
         <div className={styles.blogImages}>
+          <img
+            src='https://images.pexels.com/photos/267569/pexels-photo-267569.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+            alt='blog1'
+          />
           <div className={styles.blogInfo}>
             <div>
               <FontAwesomeIcon icon={faCalendarDay} className={styles.calendar} />
