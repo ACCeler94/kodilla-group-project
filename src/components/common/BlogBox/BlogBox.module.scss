@@ -19,6 +19,12 @@
     background: $blog-images;
     left: 1.5%;
 
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+
     .blogInfo {
       width: 300px;
       position: absolute;
